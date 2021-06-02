@@ -1,0 +1,10 @@
+navbar:
+    bck_color: '#AEFFFF'
+    translation_languages: en,es,ht,de
+    
+actionbar:
+    main_text: Social Service Directory (tunable design)
+    submit_button_text: Yahoo!
+
+footer:
+    text: Data last updated <i>June 2<small>nd</small> 2021</i>
