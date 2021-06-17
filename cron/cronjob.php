@@ -1,7 +1,7 @@
 <pre><?php
 require_once __DIR__ . '/include/loader.php';
 
-$localDataPath = __DIR__ . '/resources';
+$localDataPath = dirname(__DIR__) . '/public/resources';
 $m = Model::engine();
 
 $data = $m->getTaxonomies();
