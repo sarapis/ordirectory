@@ -67,7 +67,7 @@ class SearchController extends Controller
 				]);
 
 		list($markers, $mapCenter) = DataMapper::markers($data['items'] ?? []);
-		file_put_contents(public_path() . '/resources/markers.txt', $markers);
+		file_put_contents(public_path() . '/resources/markers_org.txt', $markers);
 
         return view('organization', [
 					'data' => $data,

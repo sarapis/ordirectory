@@ -253,7 +253,7 @@ class DataMapper
 								"{$rec['address']}<br/>{$rec['city']}, {$rec['state']}, {$rec['zip']}",
 					'iconSize' => '25,25',
 					'iconOffset' => '-12,-25',
-					'icon' => 'resources/markerR.png',
+					'icon' => 'img/markerR.png',
 				]);
 				$lats[] = (real)trim($rec['lat']);
 				$lons[] = (real)trim($rec['lon']);

@@ -72,7 +72,7 @@
 		  <div class="row mt-3">
 			<div class="col">
 				@if($data['Lng'] && $data['Lat'])
-					<script src="./OpenLayers/OpenLayers.min.js"></script>
+					<script src="/OpenLayers/OpenLayers.min.js"></script>
 					<div id="basicMap"></div>
 					<script>
 						map = new OpenLayers.Map("basicMap");
@@ -86,7 +86,7 @@
 
 						var size = new OpenLayers.Size(25,25);
 						var offset = new OpenLayers.Pixel(-12,-25);
-						var icon = new OpenLayers.Icon('resources/markerR.png',size,offset);
+						var icon = new OpenLayers.Icon('/img/markerR.png',size,offset);
 						var markers = new OpenLayers.Layer.Markers("Markers");
 						map.addLayer(markers);
 						markers.addMarker(new OpenLayers.Marker(position, icon));

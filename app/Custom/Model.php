@@ -65,7 +65,7 @@ class Model
 		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
 			if (isset($item['location'][0]))
-				$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'];
+				$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
 		//echo '<pre>';
 		#print_r($data);
 		return $data;
@@ -75,7 +75,7 @@ class Model
 	{
 		$item = self::req(config('conf.APIENTRY') . '/services/complete/' . $id);
 		if (isset($item['location'][0]))
-			$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'];
+			$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
 		return $item;
 	}
 

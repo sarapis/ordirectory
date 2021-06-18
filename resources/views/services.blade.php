@@ -27,7 +27,7 @@
 							<p class="descr">{{ $row['descr'] }}</p>
 							<p class="address">
 								@if(($row['lat'] ?? null) && ($row['lon'] ?? null))
-								  <img src="resources/markerR.png" height="16" width="16">
+								  <img src="img/markerR.png" height="16" width="16">
 								@endif
 								{{ implode(', ', array_diff([$row['address'], $row['city'], $row['state'], $row['zip']], [''])) }}
 								{{-- $row['address'] }}, {{ $row['city'] }}, {{ $row['state'] }}, {{ $row['zip'] --}}
@@ -56,7 +56,7 @@
 							.olPopup h2 {font-size:1em;}
 							.olPopup p {font-size:0.75em;}
 						</style>
-						<script src="./OpenLayers/OpenLayers.min.js"></script>
+						<script src="/OpenLayers/OpenLayers.min.js"></script>
 						
 						<script type="text/javascript">
 							var map, layer;
@@ -70,9 +70,9 @@
 							var newl = new OpenLayers.Layer.Text( "text", { location:"./resources/markers.txt"} );
 							map.addLayer(newl);
 
-							map.setCenter(new OpenLayers.LonLat(<?php echo $mapCenter['cLon']; ?>,<?php echo $mapCenter['cLat']; ?>).transform(fromProjection, toProjection), <?php echo $mapCenter['scale']; ?>);
+							map.setCenter(new OpenLayers.LonLat(<?php echo $mapcenter['cLon']; ?>,<?php echo $mapcenter['cLat']; ?>).transform(fromProjection, toProjection), <?php echo $mapcenter['scale']; ?>);
 						</script>
-					</div>				
+					</div>
 				  @else
 					<div class="sticky-top" style="height:99vh;" id="basicMapPlaceholder">
 						<p>Geocoordinates not available</p>
