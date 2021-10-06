@@ -32,7 +32,7 @@
 								{{ implode(', ', array_diff([$row['address'], $row['city'], $row['state'], $row['zip']], [''])) }}
 								{{-- $row['address'] }}, {{ $row['city'] }}, {{ $row['state'] }}, {{ $row['zip'] --}}
 							</p>
-							@if ($row['categories'])
+							@if ($row['categories'] ?? null)
 								<p class="badges">
 									Category: 
 									@foreach((array)$row['categories'] ?? [] as $taxonomy)
@@ -40,7 +40,7 @@
 									@endforeach
 								</p>
 							@endif
-							@if ($row['eligibility'])
+							@if ($row['eligibility'] ?? null)
 								<p class="badges">
 									Eligibility: 
 									@foreach((array)$row['eligibility'] ?? [] as $taxonomy)

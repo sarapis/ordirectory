@@ -18,15 +18,15 @@
 		  </div>
 		  <div class="row">
 			<div class="col-{{ $data['Schedules'] ? 6 : 12 }} ml-0">
-				@if($data['Phones'])
+				@if($data['Phones'] ?? null)
 					<p class="mb-0">tel:&nbsp;&nbsp;{{ implode(', ', (array)$data['Phones']) }}</p>
 				@endif
 					
-				@if($data['Website'])
+				@if($data['Website'] ?? null)
 					<p class="mb-0">url:&nbsp;&nbsp;<a href="{{ $data['Website'] }}">{{ $data['Website'] }}</a></p>
 				@endif
 				
-				@if($data['Languages'])
+				@if($data['Languages'] ?? null)
 					<p class="mb-3">languages:&nbsp;&nbsp;{{ implode(', ', (array)$data['Languages']) }}</p>
 				@endif
 				
@@ -41,7 +41,7 @@
 				  </p>
 				@endif
 				--}}
-				@if($data['Category'])
+				@if($data['Category'] ?? null)
 				  <p class="mt-3 mb-3">
 					<span style="font-size: 1.25rem; margin-right: 16px; min-width: 70px; display: inline-block;">Category:</span>
 					@foreach ((array)$data['Category'] as $taxonomyItem)
@@ -51,7 +51,7 @@
 					@endforeach
 				  </p>
 				@endif
-				@if($data['Eligibility'])
+				@if($data['Eligibility'] ?? null)
 				  <p class="mt-3 mb-3">
 					<span style="font-size: 1.25rem; margin-right: 16px; min-width: 70px; display: inline-block;">Eligibility:</span>
 					@foreach ((array)$data['Eligibility'] as $taxonomyItem)
@@ -62,7 +62,7 @@
 				  </p>
 				@endif
 			</div>
-			@if($data['Schedules'])
+			@if($data['Schedules'] ?? null)
 				<div class="col-6">
 					<div class="card bg-light mb-3" style="max-width: 18rem;">
 					  <div class="card-body">
