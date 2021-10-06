@@ -1,12 +1,1 @@
 point	title	description	iconSize	iconOffset	icon
-38.9053115,-77.0127649	<a href="service/1124936156339923">Counseling and Emergency Assistance<br/><small><i>by Perry School Community Services Center</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8836013,-76.994593	<a href="service/1307844962163383">Crisis Services<br/><small><i>by Community Connections</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.9917266,-77.0117802	<a href="service/1262506217054044">Disaster Relief<br/><small><i>by Adventist Community Services of Greater Washington</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8798611,-76.9951445	<a href="service/637799341696955">Drop-in Center - Sasha Bruce<br/><small><i>by Sasha Bruce</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8937514,-76.9495877	<a href="service/1236034161171034">East River Family Strengthening Collaborative<br/><small><i>by East River Family Strengthening Collaborative, Inc. (ERFSC)</i></small></a>	(202) 397-7300<br/><br/>, , 	25,25	-12,-25	img/markerR.png
-38.9014721,-77.0092596	<a href="service/850231451296174">Emergency Assistance Program<br/><small><i>by Father McKenna Center</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8435269,-76.9742231	<a href="service/1099503418949118">Emergency Housing<br/><small><i>by Covenant House Washington</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-36.3362706,-94.1934794	<a href="service/1282627737254185">Emergency Housing for Abused and Neglected Seniors<br/><small><i>by Some Others Might Eat (SOME)</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8359393; 38.9271267; 38.9808223,-76.9849936; -77.014524; -76.8651595	<a href="service/681568772199807">Emergency Psychiatric Evaluations<br/><small><i>by Children's National Hospital</i></small></a>	(202) 476-5000<br/><br/>, , 	25,25	-12,-25	img/markerR.png
-38.981673,-77.026926	<a href="service/905246821897219">Hypothermia and Low-barrier Shelter<br/><small><i>by Casa Ruby</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.915064,-77.0164135	<a href="service/773172814806209">Hypothermia Help<br/><small><i>by United Planning Organization</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png

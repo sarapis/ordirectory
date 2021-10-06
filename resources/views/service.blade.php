@@ -30,10 +30,31 @@
 					<p class="mb-3">languages:&nbsp;&nbsp;{{ implode(', ', (array)$data['Languages']) }}</p>
 				@endif
 				
-				@if($data['Taxonomy'])
+				{{--@if($data['Taxonomy'])
 				  <h5 class="mt-3 mb-3">Taxonomy</h5>
 				  <p>
 					@foreach ((array)$data['Taxonomy'] as $taxonomyItem)
+						<a href="/services?searchBy=TaxonomyName&strict=true&family=true&TaxonomyName={{ $taxonomyItem }}" class="badge badge-info mr-1" title="{{ $taxonomyItem }}">
+							{{ strlen($taxonomyItem) > 25 ? substr($taxonomyItem, 0, 22) . '...' : $taxonomyItem }}
+						</a>
+					@endforeach
+				  </p>
+				@endif
+				--}}
+				@if($data['Category'])
+				  <p class="mt-3 mb-3">
+					<span style="font-size: 1.25rem; margin-right: 16px; min-width: 70px; display: inline-block;">Category:</span>
+					@foreach ((array)$data['Category'] as $taxonomyItem)
+						<a href="/services?searchBy=TaxonomyName&strict=true&family=true&TaxonomyName={{ $taxonomyItem }}" class="badge badge-info mr-1" title="{{ $taxonomyItem }}">
+							{{ strlen($taxonomyItem) > 25 ? substr($taxonomyItem, 0, 22) . '...' : $taxonomyItem }}
+						</a>
+					@endforeach
+				  </p>
+				@endif
+				@if($data['Eligibility'])
+				  <p class="mt-3 mb-3">
+					<span style="font-size: 1.25rem; margin-right: 16px; min-width: 70px; display: inline-block;">Eligibility:</span>
+					@foreach ((array)$data['Eligibility'] as $taxonomyItem)
 						<a href="/services?searchBy=TaxonomyName&strict=true&family=true&TaxonomyName={{ $taxonomyItem }}" class="badge badge-info mr-1" title="{{ $taxonomyItem }}">
 							{{ strlen($taxonomyItem) > 25 ? substr($taxonomyItem, 0, 22) . '...' : $taxonomyItem }}
 						</a>

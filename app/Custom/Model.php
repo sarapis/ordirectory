@@ -64,9 +64,19 @@ class Model
 		#echo $req;
 		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
+		{
 			if (isset($item['location'][0]))
 				$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
-		//echo '<pre>';
+			$data['items'][$k]['categories'] = $data['items'][$k]['eligibility'] = []; 
+			foreach ($item['taxonomy'] ?? [] as $taxonomy)
+			{
+				if ($taxonomy['taxonomy_facet'] == 'Service Eligibility')
+					$data['items'][$k]['eligibility'][] = $taxonomy;
+				elseif ($taxonomy['taxonomy_facet'] == 'Service Category')
+					$data['items'][$k]['categories'][] = $taxonomy;
+			}
+		}
+		#echo '<pre>';
 		#print_r($data);
 		return $data;
 	}
@@ -76,6 +86,14 @@ class Model
 		$item = self::req(config('conf.APIENTRY') . '/services/complete/' . $id);
 		if (isset($item['location'][0]))
 			$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
+		$item['categories'] = $item['eligibility'] = []; 
+		foreach ($item['taxonomy'] ?? [] as $taxonomy)
+		{
+			if ($taxonomy['taxonomy_facet'] == 'Service Eligibility')
+				$item['eligibility'][] = $taxonomy;
+			elseif ($taxonomy['taxonomy_facet'] == 'Service Category')
+				$item['categories'][] = $taxonomy;
+		}
 		return $item;
 	}
 

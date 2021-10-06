@@ -17,9 +17,18 @@
 	{{--<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	@foreach ($design['fonts'] as $font)
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ $font }}">
+	@endforeach
 	@yield('styles')
 	<style>
+		#topmenu {background-color: {{ $design['topmenu']['bck_color'] }}}
+		#topmenu {color: {{ $design['topmenu']['site_name_color'] }}}
+		#topmenu a.top-link {color: {{ $design['topmenu']['site_name_color'] }}}
 		nav.navbar {background-color: {{ $design['navbar']['bck_color'] }}}
+		@foreach ($design['styles'] as $style)
+			{{ $style['selector'] }} {{!! $style['style'] !!}}
+		@endforeach
 	</style>
 </head>
 

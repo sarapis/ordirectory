@@ -1,6 +1,52 @@
 body{
 	top: 0 !important;
 }
+
+
+/* Top Menu */
+
+#topmenu {
+    position: relative;
+	height: 5rem;
+    display: -ms-flexbox;
+    display: flex;
+	-ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1.5rem 32px 1.5rem 2rem;
+}
+#top-title {
+    display: -ms-flexbox;
+    display: flex;
+	-ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+}
+#top-title h2 {padding:1.1rem 0px;}
+#top-links {
+	height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+	-ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+#topmenu .top-logo {max-height: 4rem; max-width: 600px; margin: .5rem 2rem .5rem -5px;}
+.top-link {
+	display: block;
+    padding: 1.5rem 0 1.5rem 3rem;
+	font-size: 1.25rem;
+	font-weight: 400;
+}
+
+/* G translate */
+
+
 #st-1 .st-btn[data-network='sharethis'] {
 	background: transparent !important;
 	padding-left: 0;

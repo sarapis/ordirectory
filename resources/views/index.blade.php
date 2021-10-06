@@ -67,12 +67,30 @@
 										<div class="collapse" id="collapse-{{ $item['code'] }}">
 										  <div class="card card-body">
 											@foreach ($item['items'] as $item2)
-												<p>—&nbsp;<a href=\"{{ preg_replace('~.php~', '', $item2['url']) }}\" class=\"pl-1\">{{ $item2['name'] }}</a></p>
+												@if($item2['items'])
+													<p>
+													  <a data-toggle="collapse" href="#collapse-{{ $item2['code'] }}" role="button" aria-expanded="false" aria-controls="collapse-{{ $item2['code'] }}">
+														<b class="fa"></b>&nbsp;
+													  </a>
+													  <a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="btn btn-link collapsed">{{ $item2['name'] }}</a>
+													</p>
+													<div class="collapse" id="collapse-{{ $item2['code'] }}">
+													  <div class="card card-body">
+														@foreach ($item2['items'] as $item2)
+															<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="pl-2">{{ $item2['name'] }}</a></p>
+														@endforeach
+													  </div>
+													</div>
+												@else
+													<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="pl-1">{{$item2['name']}}</a></p>
+												@endif
+
+												{{--<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="pl-1">{{ $item2['name'] }}</a></p>--}}
 											@endforeach
 										  </div>
 										</div>
 									@else
-										<p>—&nbsp;<a href=\"{{ preg_replace('~.php~', '', $item['url']) }}\" class=\"pl-1\">{$item['name']}</a></p>
+										<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item['url']) }}" class="pl-1">{{$item['name']}}</a></p>
 									@endif
 								@endforeach
 							  </div>
