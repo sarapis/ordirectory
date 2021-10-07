@@ -18,14 +18,13 @@ body{
     justify-content: space-between;
     padding: 1.5rem 32px 1.5rem 2rem;
 }
-#top-title {
+.flexmenu-group-left {
     display: -ms-flexbox;
     display: flex;
 	-ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
 }
-#top-title h2 {padding:1.1rem 0px;}
-#top-links {
+.flexmenu-group-right {
 	height: 100%;
     display: -ms-flexbox;
     display: flex;
@@ -36,6 +35,7 @@ body{
     -ms-flex-pack: end;
     justify-content: flex-end;
 }
+#topmenu h2 {padding:1.1rem 0px;}
 #topmenu .top-logo {max-height: 4rem; max-width: 600px; margin: .5rem 2rem .5rem -5px;}
 .top-link {
 	display: block;
@@ -43,18 +43,30 @@ body{
 	font-size: 1.25rem;
 	font-weight: 400;
 }
-
+#bottommenu {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+	-ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+	padding: .5rem 32px;
+    /*padding: 1.5rem 32px 1.5rem 2rem;*/
+}
 /* G translate */
-
+#bottommenu .flexmenu-group-right .nav-link {padding: .5rem;}
 
 #st-1 .st-btn[data-network='sharethis'] {
 	background: transparent !important;
 	padding-left: 0;
 }  
 #google_translate_element{
-	width: 140px;
-	position: absolute;
-	right: 32px;
+	width: 130px;
+	/*position: absolute;
+	right: 32px;*/
 }
 .goog-te-banner-frame.skiptranslate{
 	display: none;
@@ -195,16 +207,6 @@ body{
 }
 
 
-/* input field width 
-.twitter-typeahead>.form-control {
-    position: relative;
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    min-width: 100%;
-    margin-bottom: 0;
-}
-*/
 .twitter-typeahead {width:100%;}
 
 

@@ -1,1 +1,11 @@
 point	title	description	iconSize	iconOffset	icon
+38.9096198,-77.0075199	<a href="service/891803649812249">Adult Assessment and Referral Center (ARC)<br/><small><i>by DC Department of Behavioral Health (DBH)</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+39.0178048; 38.9116973,-76.9197707; -76.9339447	<a href="service/864041028832460">Adult Medicine<br/><small><i>by Elaine Ellis Center of Health</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.9028335,-76.999142	<a href="service/953571703501099">Adult Protective Services<br/><small><i>by DC Department of Aging and Community Living (DACL)</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.8548975,-76.9844872	<a href="service/1208941632060908">Anacostia Family Success Center<br/><small><i>by Martha's Table</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.844288; 38.911691,-76.9985519; -77.0247585	<a href="service/1272557250166706">Assertive Community Treatment<br/><small><i>by Hillcrest Children & Family Center</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.8836013,-76.994593	<a href="service/785169150627540">Assertive Community Treatment (ACT) - Community Connections<br/><small><i>by Community Connections</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.9032398,-77.0322033	<a href="service/815127350806373">Behavioral Health <br/><small><i>by MetroHealth</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.900787,-76.9780775	<a href="service/1185359834982349">Birth Services<br/><small><i>by Community of Hope</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.9258922,-77.0352621	<a href="service/948838805132982">Care Management and Care Coordination<br/><small><i>by La Clínica del Pueblo</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.8435269,-76.9742231	<a href="service/631018985097612">Case Management<br/><small><i>by Covenant House Washington</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png

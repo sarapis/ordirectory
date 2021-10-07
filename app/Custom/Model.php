@@ -65,8 +65,8 @@ class Model
 		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
 		{
-			if (isset($item['location'][0]))
-				$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
+			#if (isset($item['location'][0]))
+			#	$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
 			$data['items'][$k]['categories'] = $data['items'][$k]['eligibility'] = []; 
 			foreach ($item['taxonomy'] ?? [] as $taxonomy)
 			{
@@ -84,8 +84,8 @@ class Model
 	static function getService($id)
 	{
 		$item = self::req(config('conf.APIENTRY') . '/services/complete/' . $id);
-		if (isset($item['location'][0]))
-			$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
+		#if (isset($item['location'][0]))
+		#	$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
 		$item['categories'] = $item['eligibility'] = []; 
 		foreach ($item['taxonomy'] ?? [] as $taxonomy)
 		{
