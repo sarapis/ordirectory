@@ -26,6 +26,10 @@ footer:
 styles:
     - selector: body
       style: "font-family: 'Gemunu Libre', sans-serif;"
+    - selector: ".goog-te-gadget-simple .goog-te-menu-value span:before"
+      style: "font-family: 'Gemunu Libre', sans-serif; font-size: 1rem;"
+    - selector: "#google_translate_element"
+      style: "margin-top:-3px; margin-right:-25px; text-align:left;"
     - selector: "#top-title h2"
       style: "font-family: 'Nunito', sans-serif; font-size: 32px;"
       
