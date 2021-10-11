@@ -1,5 +1,5 @@
 topmenu:
-    turned_on: true
+    turned_on: false
     logo_url: /img/we-gov-logo.png
     site_name: DC New Supersite
     site_name_color: '#FFEEFF'
@@ -11,18 +11,14 @@ topmenu:
           url: /secondary
         - text: Tertiary
           url: /tertiary
-
 navbar:
-    bck_color: '#AEFFFF'
-    translation_languages: en,es,ht,de
-    
+    bck_color: '##E7245E'
+    translation_languages: en,es
 actionbar:
-    main_text: Social Service Directory (tunable design)
-    submit_button_text: Yahoo!
-
+    main_text: DC Next Service Directory
+    submit_button_text: Search
 footer:
     text: Data last updated <i>June 2<small>nd</small> 2021</i>
-    
 styles:
     - selector: body
       style: "font-family: 'Gemunu Libre', sans-serif;"
@@ -32,7 +28,6 @@ styles:
       style: "margin-top:-3px; margin-right:-25px; text-align:left;"
     - selector: "#top-title h2"
       style: "font-family: 'Nunito', sans-serif; font-size: 32px;"
-      
 fonts:
     - Nunito
     - Gemunu Libre

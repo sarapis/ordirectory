@@ -21,7 +21,7 @@
 		<nav class="navbar navbar-expand-lg" id="bottommenu">
 			<div class="flexmenu-group-left">
 				@if ($req && $req == 'back')
-					<a class="nav-link" onclick="window.history.back();" href="#">&laquo; Back to search results</a>
+					<a class="nav-link pl-0" onclick="window.history.back();" href="#">&laquo; Back to search results</a>
 				@elseif ($req && $req <> 'back')
 					<a class="nav-link" href="{{ route('index') }}">&laquo; Back to search form</a>
 					<a class="nav-link">{!! RequestMapper::titleEnc($req, true) !!}</a>
