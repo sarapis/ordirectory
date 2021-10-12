@@ -88,21 +88,18 @@ class DataMapper
 		$idx = [
 			'id' => ['key' => 'id', 'subkey' => ''],
 			'name' => ['key' => 'name', 'subkey' => ''],
-			'lat' => ['key' => 'location', 'subkey' => 'latitude'],
-			'lon' => ['key' => 'location', 'subkey' => 'longitude'],
+			#'lat' => ['key' => 'location', 'subkey' => 'latitude'],
+			#'lon' => ['key' => 'location', 'subkey' => 'longitude'],
 			'organization' => ['key' => 'organization', 'subkey' => 'name'],
 			'descr' => ['key' => 'description', 'subkey' => ''],
+			'phone' => ['key' => 'phone', 'subkey' => 0],
 			#'taxonomies' => ['key' => 'taxonomy', 'subkey' => 'name'],
 			'categories' => ['key' => 'categories', 'subkey' => 'name'],
 			'eligibility' => ['key' => 'eligibility', 'subkey' => 'name'],
-			'address' => ['key' => 'address', 'subkey' => 'address_1'],
-			'city' => ['key' => 'address', 'subkey' => 'city'],
-			'state' => ['key' => 'address', 'subkey' => 'state_province'],
-			'zip' => ['key' => 'address', 'subkey' => 'postal_code']
-			];
+		];
 		foreach ($data as $rec)
 		{
-			$r = [];
+			$r = ['locations' => []];
 			foreach ($idx as $f=>$keys)
 			{
 				$rec[$keys['key']] = $rec[$keys['key']] ?? null;
@@ -119,15 +116,42 @@ class DataMapper
 			$r['descr'] = preg_replace('~\s*(\\\n)+\s*~si', ' ', $r['descr']);
 			if (strlen($r['descr']) > 490)
 				$r['descr'] = preg_replace('~\W+\w*$~si', '...', substr($r['descr'], 0, 490));
+			foreach ($rec['location'] ?? [] as $loc)
+			{
+				$r['locations'][] = array_merge($loc, [
+					'display_pin' => $loc['latitude'] && $loc['longitude'],
+					'physical_address' => self::addr($loc['physical_address'] ?? []),
+					'phones' => self::phones($loc['phones'] ?? []),
+				]);
+			}
 			$rr[] = $r;
 		}
+		#echo '<pre>';
+		#print_r($rr);
+		#echo '</pre>';
 		return $rr;
 	}	
 
 
+	static function addr($physical_address)
+	{
+		$matr = array_fill_keys(['address_1', 'address_2', 'city', 'state_province', 'postal_code', 'country'], '');
+		$addr = array_merge($matr, array_intersect_key($physical_address[0] ?? [], $matr));
+		$addr['state_province'] = trim(implode(' ', [$addr['state_province'], $addr['postal_code']]));
+		unset($addr['postal_code']);
+		return implode(', ', array_diff($addr, ['']));
+	}
+
+	static function phones($raw_phones)
+	{
+		$pp = [];
+		foreach ($raw_phones as $p)
+			$pp[] = $p['number'];
+		return implode(', ', array_diff($pp, ['']));
+	}
+
 	static function serviceCard($rec)
 	{
-		$rr = [];
 		$idx = [
 			'id' => ['key' => 'id', 'subkey' => ''],
 			'Service Name' => ['key' => 'name', 'subkey' => ''],
@@ -139,26 +163,14 @@ class DataMapper
 			'SchedulesDays' => ['key' => 'regular_schedule', 'subkey' => 'weekday'],
 			'SchedulesOpen' => ['key' => 'regular_schedule', 'subkey' => 'opens_at'],
 			'SchedulesClose' => ['key' => 'regular_schedule', 'subkey' => 'closes_at'],
-			#'Taxonomy' => ['key' => 'taxonomy', 'subkey' => 'name'],
 			'Category' => ['key' => 'categories', 'subkey' => 'name'],
 			'Eligibility' => ['key' => 'eligibility', 'subkey' => 'name'],
 			'DetailsType' => ['key' => 'details', 'subkey' => 'type'],
 			'DetailsValue' => ['key' => 'details', 'subkey' => 'value'],
 			
-			'Location Name' => ['key' => 'location', 'subkey' => 'name'],
-			'Location Description' => ['key' => 'location', 'subkey' => 'description'],
-			'Lat' => ['key' => 'location', 'subkey' => 'latitude'],
-			'Lng' => ['key' => 'location', 'subkey' => 'longitude'],
-			'Address' => ['key' => 'address', 'subkey' => 'address_1'],
-			'Address2' => ['key' => 'address', 'subkey' => 'address_2'],
-			'Address3' => ['key' => 'address', 'subkey' => 'address_3'],
-			'Address4' => ['key' => 'address', 'subkey' => 'address_4'],
-			'City' => ['key' => 'address', 'subkey' => 'city'],
-			'State' => ['key' => 'address', 'subkey' => 'state_province'],
-			'Zip' => ['key' => 'address', 'subkey' => 'postal_code'],
 		];
 		
-		$r = [];
+		$r = ['locations' => []];
 		foreach ($idx as $f=>$keys)
 		{
 			$rec[$keys['key']] = $rec[$keys['key']] ?? null;
@@ -170,16 +182,16 @@ class DataMapper
 			else 
 				$r[$f] = '';
 			
-			if (is_array($r[$f]) && count($r[$f]) == 1)
+			if (is_array($r[$f] ?? null) && count($r[$f]) == 1)
 				$r[$f] = $r[$f][0];
 		}
 		$r['Website'] = preg_match('~^https?://~si', $r['Website']) ? $r['Website'] : 'http://' . $r['Website'];
 		
-		$aa = [$r['Address'], $r['Address2'], $r['Address3'], $r['Address4']];
-		$aa = array_diff($aa, ['', null]);
-		$r['Address'] = preg_replace('~[\s ]+,~si', ',', implode(', ', $aa));
-		$r['Description'] = preg_replace('~\\\n~si', "<br/>", $r['Description']);
-		$r['Location Description'] = preg_replace('~\\n~si', "<br/>", $r['Location Description']);
+		#$aa = [$r['Address'], $r['Address2'], $r['Address3'], $r['Address4']];
+		#$aa = array_diff($aa, ['', null]);
+		#$r['Address'] = preg_replace('~[\s ]+,~si', ',', implode(', ', $aa));
+		$r['Description'] = preg_replace('~\\\n|\n~si', "<br/>", $r['Description']);
+		#$r['Location Description'] = preg_replace('~\\n~si', "<br/>", $r['Location Description']);
 		
 		$ss = [];
 		if ($r['SchedulesDays'])
@@ -187,13 +199,11 @@ class DataMapper
 			$schedule = [];
 			foreach ((array)$r['SchedulesDays'] as $i=>$day)
 				$schedule[] = ['day' => $day, 'open' => $r['SchedulesOpen'][$i], 'close' => $r['SchedulesClose'][$i]];
-			usort($schedule, 'schedulesort');
+			usort($schedule, 'App\Custom\schedulesort');
 			foreach ((array)$schedule as $schRec)
 				$ss[] = "<span class='weekday'>{$schRec['day']}</span> {$schRec['open']}-{$schRec['close']}";
 		}
 		$r['Schedules']	= implode('<br/>', $ss);
-		//echo '<pre>';
-		//print_r($r);
 		$details = [];
 		if ($r['DetailsType'])
 		{	
@@ -206,62 +216,62 @@ class DataMapper
 		}
 		$r['Details'] = $details;
 		
+		$r['display_map'] = false;
+		foreach ($rec['location'] ?? [] as $loc)
+		{
+			$r['locations'][] = array_merge($loc, [
+				'display_pin' => $loc['latitude'] && $loc['longitude'],
+				'physical_address' => self::addr($loc['physical_address'] ?? []),
+				'phones' => self::phones($loc['phones'] ?? []),
+				'description' => preg_replace('~\\n~si', "<br/>", $loc['description']),
+			]);
+			if ($loc['latitude'] && $loc['longitude'])
+				$r['display_map'] = true;
+		}
+		
 		$r = array_diff_key($r, array_fill_keys(['Address2', 'Address3', 'Address4', 'SchedulesDays', 'SchedulesOpen', 'SchedulesClose', 'DetailsType', 'DetailsValue'], 1));
 		
+		#echo '<pre>';
+		#print_r($r);
+		#echo '</pre>';
 		return $r;
 	}
 
 	static function markers($data)
 	{
 		$mm = [];
-		$idx = [
-			'id' => ['key' => 'id', 'subkey' => ''],
-			'lat' => ['key' => 'location', 'subkey' => 'latitude'],
-			'lon' => ['key' => 'location', 'subkey' => 'longitude'],
-			'service' => ['key' => 'name', 'subkey' => ''],
-			'organization' => ['key' => 'organization', 'subkey' => 'name'],
-			'phone' => ['key' => 'phones', 'subkey' => 'number'],
-			'address' => ['key' => 'address', 'subkey' => 'address_1'],
-			'city' => ['key' => 'address', 'subkey' => 'city'],
-			'state' => ['key' => 'address', 'subkey' => 'state_province'],
-			'zip' => ['key' => 'address', 'subkey' => 'postal_code']
-		];
 		foreach ((array)$data as $rec)
 		{
-			$r = [];
-			foreach ($idx as $f=>$keys)
-			{
-				$rec[$keys['key']] = $rec[$keys['key']] ?? null;
-				if (is_string($rec[$keys['key']]))
-					$r[$f] = $rec[$keys['key']];
-				elseif (is_array($rec[$keys['key']]))
-					foreach ($rec[$keys['key']] as $val)
-						$r[$f][] = $val[$keys['subkey']];
-				else 
-					$r[$f] = '';
-				if (is_array($r[$f] ?? null))
-					$r[$f] = implode('; ', $r[$f]);
-			}
-			$mm[] = $r;
+			foreach ($rec['location'] ?? [] as $i=>$loc)
+				if ((real)trim($loc['latitude'] ?? null) && (real)trim($loc['longitude'] ?? null))
+					$mm[] = [
+						'id' => $rec['id'],
+						'lat' => trim($loc['latitude']),
+						'lon' => trim($loc['longitude']),
+						'service' => $rec['name'],
+						'organization' => $rec['organization']['name'] ?? '',
+						'phone' => self::phones($loc['phones'] ?? []),
+						'address' => self::addr($loc['physical_address'] ?? []),
+					];
 		}
 		$rr = ['point	title	description	iconSize	iconOffset	icon'];
 		$lats = $lons = [];
 		foreach ($mm as $rec)
-			if ((real)trim($rec['lat'] ?? null) && (real)trim($rec['lon'] ?? null))
-			{
-				$rr[] = implode("\t", [
-					'point' => "{$rec['lat']},{$rec['lon']}",
-					'title' => "<a href=\"service/{$rec['id']}\">{$rec['service']}" .
-							($rec['organization'] ? "<br/><small><i>by {$rec['organization']}</i></small>" : '') . '</a>',
-					'description' => ($rec['phone'] ? "{$rec['phone']}<br/>" : '') .
-								"{$rec['address']}<br/>{$rec['city']}, {$rec['state']}, {$rec['zip']}",
-					'iconSize' => '25,25',
-					'iconOffset' => '-12,-25',
-					'icon' => 'img/markerR.png',
-				]);
-				$lats[] = (real)trim($rec['lat']);
-				$lons[] = (real)trim($rec['lon']);
-			}
+		{
+			$rr[] = implode("\t", [
+				'point' => "{$rec['lat']},{$rec['lon']}",
+				'title' => "<a href=\"service/{$rec['id']}\">{$rec['service']}" .
+						($rec['organization'] ? "<br/><small><i>by {$rec['organization']}</i></small>" : '') . '</a>',
+				'description' => ($rec['phone'] ? "{$rec['phone']}<br/>" : '') .
+							//"{$rec['address']}<br/>{$rec['city']}, {$rec['state']}, {$rec['zip']}",
+							preg_replace('~, ~', '<br/>', $rec['address'], 1),
+				'iconSize' => '25,25',
+				'iconOffset' => '-12,-25',
+				'icon' => 'img/markerR.png',
+			]);
+			$lats[] = (real)trim($rec['lat']);
+			$lons[] = (real)trim($rec['lon']);
+		}
 		if ($lats)
 		{
 			$minLat = min($lats);
@@ -274,7 +284,6 @@ class DataMapper
 			$dLon = ($maxLon - $minLon) / 2;
 			$scale = self::mapScale($dLat, $dLon);
 		}
-		//print_r(compact(['cLat', 'cLon', 'dLat', 'dLon', 'scale']));
 		return [implode("\n", $rr) . "\n", compact(['cLat', 'cLon', 'scale'])];
 	}	
 

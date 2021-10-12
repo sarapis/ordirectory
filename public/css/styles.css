@@ -281,7 +281,7 @@ p .btn-link {padding:0; border:0;}
 	/*tile*/
 	#sGrid .descr, #sGrid .badges {font-size:.85rem;}
 	#sGrid .title {margin-bottom:.75rem;}
-	#sGrid .address {font-weight:600;}
+	#sGrid .address {font-weight:400;}
 	
 /* org tiles */
 .orgDetails {padding: 0.5em 1.75em 2em;}

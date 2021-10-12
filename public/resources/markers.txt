@@ -1,11 +1,13 @@
 point	title	description	iconSize	iconOffset	icon
-38.9096198,-77.0075199	<a href="service/891803649812249">Adult Assessment and Referral Center (ARC)<br/><small><i>by DC Department of Behavioral Health (DBH)</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-39.0178048; 38.9116973,-76.9197707; -76.9339447	<a href="service/864041028832460">Adult Medicine<br/><small><i>by Elaine Ellis Center of Health</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.9028335,-76.999142	<a href="service/953571703501099">Adult Protective Services<br/><small><i>by DC Department of Aging and Community Living (DACL)</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8548975,-76.9844872	<a href="service/1208941632060908">Anacostia Family Success Center<br/><small><i>by Martha's Table</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.844288; 38.911691,-76.9985519; -77.0247585	<a href="service/1272557250166706">Assertive Community Treatment<br/><small><i>by Hillcrest Children & Family Center</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8836013,-76.994593	<a href="service/785169150627540">Assertive Community Treatment (ACT) - Community Connections<br/><small><i>by Community Connections</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.9032398,-77.0322033	<a href="service/815127350806373">Behavioral Health <br/><small><i>by MetroHealth</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.900787,-76.9780775	<a href="service/1185359834982349">Birth Services<br/><small><i>by Community of Hope</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.9258922,-77.0352621	<a href="service/948838805132982">Care Management and Care Coordination<br/><small><i>by La Clínica del Pueblo</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
-38.8435269,-76.9742231	<a href="service/631018985097612">Case Management<br/><small><i>by Covenant House Washington</i></small></a>	<br/>, , 	25,25	-12,-25	img/markerR.png
+38.9096198,-77.0075199	<a href="service/891803649812249">Adult Assessment and Referral Center (ARC)</a>	(202) 727-8473<br/>75 P St NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+39.0178048,-76.9197707	<a href="service/864041028832460">Adult Medicine</a>	(301) 441-1605, (301) 345-1609<br/>10001 Rhode Island Ave<br/>College Park, MD 20740, US	25,25	-12,-25	img/markerR.png
+38.9116973,-76.9339447	<a href="service/864041028832460">Adult Medicine</a>	(202) 803-2350, (202) 803-2340<br/>1627 Kenilworth Ave. NE<br/>Washington, DC 20019, US	25,25	-12,-25	img/markerR.png
+38.9028335,-76.999142	<a href="service/953571703501099">Adult Protective Services</a>	500 K St. NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.8548975,-76.9844872	<a href="service/1208941632060908">Anacostia Family Success Center</a>	(202) 328-6608<br/>2375 Elvans Rd. SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.844288,-76.9985519	<a href="service/1272557250166706">Assertive Community Treatment</a>	3029 Martin Luther King<br/>Jr. Ave SE, Washington, DC 20032, US	25,25	-12,-25	img/markerR.png
+38.911691,-77.0247585	<a href="service/1272557250166706">Assertive Community Treatment</a>	(202) 232-6100<br/>915 Rhode Island Avenue<br/>Washington, DC 20001, US	25,25	-12,-25	img/markerR.png
+38.8836013,-76.994593	<a href="service/785169150627540">Assertive Community Treatment (ACT) - Community Connections</a>	(202) 546-1512<br/>801 Pennsylvania Ave SE<br/>Washington, DC 20003, US	25,25	-12,-25	img/markerR.png
+38.9032398,-77.0322033	<a href="service/815127350806373">Behavioral Health </a>	(202) 638-0750<br/>1012 14th Street<br/>NW, Suite 700, Washington, DC 20005, US	25,25	-12,-25	img/markerR.png
+38.900787,-76.9780775	<a href="service/1185359834982349">Birth Services</a>	(202) 398-5520<br/>801 17th Street<br/>NE , Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.9258922,-77.0352621	<a href="service/948838805132982">Care Management and Care Coordination</a>	(202) 462-4788, (202) 667-3706, (202) 319-3414<br/>2831 15th St NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
+38.8435269,-76.9742231	<a href="service/631018985097612">Case Management</a>	(202) 610-9600, 1 (800) 535-7252<br/>2001 Mississippi Ave SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png

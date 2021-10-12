@@ -25,13 +25,20 @@
 								  @endif
 							</h5>
 							<p class="descr">{{ $row['descr'] }}</p>
-							<p class="address">
-								@if(($row['lat'] ?? null) && ($row['lon'] ?? null))
-								  <img src="img/markerR.png" height="16" width="16">
-								@endif
-								{{ implode(', ', array_diff([$row['address'], $row['city'], $row['state'], $row['zip']], [''])) }}
-								{{-- $row['address'] }}, {{ $row['city'] }}, {{ $row['state'] }}, {{ $row['zip'] --}}
-							</p>
+							@foreach ($row['locations'] as $loc)
+								<p class="address">
+									@if($loc['display_pin'])
+										<img src="/img/markerR.png" height="16" width="16" class="mr-1">
+								    @else
+										<span class="mr-1">&bullet;</span>
+									@endif
+									{{ $loc['physical_address'] }}
+									@if($loc['phones'])
+										<i class="bi-telephone ml-3 mr-1"></i>
+										{{ $loc['phones'] }}
+									@endif
+								</p>
+							@endforeach
 							@if ($row['categories'] ?? null)
 								<p class="badges">
 									Category: 

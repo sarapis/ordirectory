@@ -65,8 +65,9 @@ class Model
 		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
 		{
-			#if (isset($item['location'][0]))
-			#	$data['items'][$k]['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
+			foreach ($item['location'] ?? [] as $i=>$loc)
+				$data['items'][$k]['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
+				
 			$data['items'][$k]['categories'] = $data['items'][$k]['eligibility'] = []; 
 			foreach ($item['taxonomy'] ?? [] as $taxonomy)
 			{
@@ -84,8 +85,8 @@ class Model
 	static function getService($id)
 	{
 		$item = self::req(config('conf.APIENTRY') . '/services/complete/' . $id);
-		#if (isset($item['location'][0]))
-		#	$item['address'] = (self::req(config('conf.APIENTRY') . "/locations/{$item['location'][0]['id']}/physical-address"))['items'] ?? null;
+		foreach ($item['location'] ?? [] as $i=>$loc)
+			$item['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
 		$item['categories'] = $item['eligibility'] = []; 
 		foreach ($item['taxonomy'] ?? [] as $taxonomy)
 		{
@@ -94,8 +95,24 @@ class Model
 			elseif ($taxonomy['taxonomy_facet'] == 'Service Category')
 				$item['categories'][] = $taxonomy;
 		}
+		#echo '<pre>';
+		#print_r($item);
 		return $item;
 	}
+
+	static function getServiceLocationDetails($lid, $sid)
+	{
+		static $lcache = [];
+		$lcache[$lid] = $lcache[$lid] ?? (self::req(config('conf.APIENTRY') . "/locations/complete/{$lid}") ?? []);
+		$rr = array_intersect_key($lcache[$lid], ['regular_schedule' => [], 'physical_address' => [], 'phones' => []]);
+		
+		$has_custom_schedule = false;
+		foreach ($rr['regular_schedule'] ?? [] as $i=>$s)
+			if ($s['service_id'] ?? null)
+				unset($rr['regular_schedule'][$i]);
+		return $rr;
+	}
+
 
 	static function req($url)
 	{

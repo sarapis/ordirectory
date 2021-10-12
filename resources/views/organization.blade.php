@@ -31,22 +31,42 @@
 						<div class="card mb-3 py-3">
 						  <div class="card-body">
 							<h5 class="title">
-								{{ $row['name'] }} 
-								@if($row['organization'])
+								{{ $row['name'] }}
+								  @if($row['organization'] ?? null)
 									<small>by {{ $row['organization'] }}</small>
-								@endif	
+								  @endif
 							</h5>
 							<p class="descr">{{ $row['descr'] }}</p>
-							<p class="address">
-								@if($row['lat'] && $row['lon'])
-								  <img src="/img/markerR.png" height="16" width="16">
-								@endif
-								{{ implode(', ', array_diff([$row['address'], $row['city'], $row['state'], $row['zip']], [''])) }}</p>
-							<p class="badges">
-								@foreach ((array)$row['taxonomies'] ?? [] as $taxonomy)
-									<span class="badge badge-info mr-1" title="{{ $taxonomy }}">{{ $taxonomy }}</span>
-								@endforeach 
-							</p>
+							@foreach ($row['locations'] as $loc)
+								<p class="address">
+									@if($loc['display_pin'])
+										<img src="/img/markerR.png" height="16" width="16" class="mr-1">
+								    @else
+										<span class="mr-1">&bullet;</span>
+									@endif
+									{{ $loc['physical_address'] }}
+									@if($loc['phones'])
+										<i class="bi-telephone ml-3 mr-1"></i>
+										{{ $loc['phones'] }}
+									@endif
+								</p>
+							@endforeach
+							@if ($row['categories'] ?? null)
+								<p class="badges">
+									Category: 
+									@foreach((array)$row['categories'] ?? [] as $taxonomy)
+										<span class="badge badge-info mr-1" title="{{ $taxonomy }}">{{ $taxonomy }}</span>
+									@endforeach
+								</p>
+							@endif
+							@if ($row['eligibility'] ?? null)
+								<p class="badges">
+									Eligibility: 
+									@foreach((array)$row['eligibility'] ?? [] as $taxonomy)
+										<span class="badge badge-info mr-1" title="{{ $taxonomy }}">{{ $taxonomy }}</span>
+									@endforeach
+								</p>
+							@endif
 						  </div>
 						</div>
 					  </a>
