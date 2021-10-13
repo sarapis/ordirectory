@@ -52,7 +52,7 @@ class SearchController extends Controller
 					'id' => $id,
 					'data' => $data,
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
-					'title' => $data['name'],
+					'title' => $data['Service Name'],
 				]);
     }
 
