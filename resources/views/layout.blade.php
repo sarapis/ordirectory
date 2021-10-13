@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=61660f404564d200122a7def&product=sop' async='async'></script>
+	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=61660f404564d200122a7def&product=sop'></script>
 
     <!-- Styles -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
