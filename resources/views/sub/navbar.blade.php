@@ -34,8 +34,7 @@
 				  </a>
 
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<div class=" dropdown-item">
-					<div class="st-custom-button" data-network="facebook"><i class="bi-facebook" style="margin-right:.4rem;"></i>share</div>
+					<div class="st-custom-button dropdown-item" data-network="facebook"><i class="bi-facebook" style="margin-right:.4rem;"></i>share</div>
 					</div>
 					<div class="button share-button twitter-share-button dropdown-item"><i class="bi-twitter" style="margin-right:.4rem;"></i>tweet</div>
 					<div class="button share-button pinterest-share-button dropdown-item"><i class="fab fa-pinterest-p" style="margin-right:.4rem;"></i>pin</div>
