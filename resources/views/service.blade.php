@@ -109,7 +109,14 @@
 				@else	
 					<div id="basicMapPlaceholder">
 						<p class="mb-0">Geocoordinates not available<br/>
-							<small><a href="https://www.google.com.ua/maps/place/{{ (implode(', ', [$data['Address'],$data['City'],$data['State'],$data['Zip']])) }}">See on Google Maps</a></small>
+							@foreach ($data['locations'] ?? [] as $loc)
+								@if ($loc['physical_address'])
+									<small><a href="https://www.google.com.ua/maps/place/{{ $loc['physical_address'] }}">See on Google Maps</a></small>
+									@php
+										break;
+									@endphp
+								@endif
+							@endforeach
 						</p>
 					</div>
 				@endif	
