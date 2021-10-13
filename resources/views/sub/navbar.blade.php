@@ -35,12 +35,11 @@
 
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<div class="st-custom-button dropdown-item" data-network="facebook"><i class="bi-facebook" style="margin-right:.4rem;"></i>share</div>
-					</div>
-					<div class="button share-button twitter-share-button dropdown-item"><i class="bi-twitter" style="margin-right:.4rem;"></i>tweet</div>
-					<div class="button share-button pinterest-share-button dropdown-item"><i class="fab fa-pinterest-p" style="margin-right:.4rem;"></i>pin</div>
-					<div class="button share-button email-share-button dropdown-item"><i class="bi-envelope-fill" style="margin-right:.4rem;"></i>email</div>
-					<div class="button share-button linkedin-share-button dropdown-item"><i class="bi-linkedin" style="margin-right:.4rem;"></i>linkedin</div>
-					<div class="button share-button sharethis-share-button dropdown-item"><i class="bi-share-fill" style="margin-right:.4rem;"></i>sharethis</div>
+					<div class="st-custom-button dropdown-item" data-network="twitter"><i class="bi-twitter" style="margin-right:.4rem;"></i>tweet</div>
+					<div class="st-custom-button dropdown-item" data-network="pinterest"><i class="fab fa-pinterest-p" style="margin-right:.4rem;"></i>pin</div>
+					<div class="st-custom-button dropdown-item" data-network="email"><i class="bi-envelope-fill" style="margin-right:.4rem;"></i>email</div>
+					<div class="st-custom-button dropdown-item" data-network="linkedin"><i class="bi-linkedin" style="margin-right:.4rem;"></i>linkedin</div>
+					<div class="st-custom-button dropdown-item" data-network="sharethis"><i class="bi-share-fill" style="margin-right:.4rem;"></i>sharethis</div>
 				  </div>
 				</div>
 				<div class="nav-link dropdown">

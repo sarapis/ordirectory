@@ -16,6 +16,7 @@ class SearchController extends Controller
 					'data' => json_decode(file_get_contents(public_path() . '/resources/taxonomyCatalog.json'), true),
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
 					'req' => $_GET,
+					'title' => 'DC New Social Services Site',
 				]);
     }
 
@@ -38,6 +39,7 @@ class SearchController extends Controller
 				'req' => $_GET,
 				'mapcenter' => $mapCenter,
 				'tiles' => DataMapper::tilesData($data['items'] ?? []),
+				'title' => 'DC Social Services Search',
 			]);
     }
 
@@ -50,6 +52,7 @@ class SearchController extends Controller
 					'id' => $id,
 					'data' => $data,
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
+					'title' => $data['name'],
 				]);
     }
 
@@ -76,6 +79,7 @@ class SearchController extends Controller
 					'mapcenter' => $mapCenter,
 					'org' => DataMapper::orgDetails((array)$data['items'] ?? []),
 					'tiles' => DataMapper::tilesData((array)$data['items'] ?? []),
+					'title' => $data['items'][0]['organization']['name'] ?? '',
 				]);
     }
 

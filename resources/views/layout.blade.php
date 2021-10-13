@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'dc.openreferral.org') }}</title>
+    <title>{{ $title }}</title>
 
 	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=61660f404564d200122a7def&product=sop'></script>
     <!-- Fonts -->
