@@ -160,9 +160,9 @@ class DataMapper
 			'Phones' => ['key' => 'phones', 'subkey' => 'number'],
 			'Website' => ['key' => 'url', 'subkey' => ''],
 			'Languages' => ['key' => 'languages', 'subkey' => 'language'],
-			'SchedulesDays' => ['key' => 'regular_schedule', 'subkey' => 'weekday'],
-			'SchedulesOpen' => ['key' => 'regular_schedule', 'subkey' => 'opens_at'],
-			'SchedulesClose' => ['key' => 'regular_schedule', 'subkey' => 'closes_at'],
+			#'SchedulesDays' => ['key' => 'regular_schedule', 'subkey' => 'weekday'],
+			#'SchedulesOpen' => ['key' => 'regular_schedule', 'subkey' => 'opens_at'],
+			#'SchedulesClose' => ['key' => 'regular_schedule', 'subkey' => 'closes_at'],
 			'Category' => ['key' => 'categories', 'subkey' => 'name'],
 			'Eligibility' => ['key' => 'eligibility', 'subkey' => 'name'],
 			'DetailsType' => ['key' => 'details', 'subkey' => 'type'],
@@ -187,23 +187,8 @@ class DataMapper
 		}
 		$r['Website'] = preg_match('~^https?://~si', $r['Website']) ? $r['Website'] : 'http://' . $r['Website'];
 		
-		#$aa = [$r['Address'], $r['Address2'], $r['Address3'], $r['Address4']];
-		#$aa = array_diff($aa, ['', null]);
-		#$r['Address'] = preg_replace('~[\s ]+,~si', ',', implode(', ', $aa));
 		$r['Description'] = preg_replace('~\\\n|\n~si', "<br/>", $r['Description']);
-		#$r['Location Description'] = preg_replace('~\\n~si', "<br/>", $r['Location Description']);
 		
-		$ss = [];
-		if ($r['SchedulesDays'])
-		{	
-			$schedule = [];
-			foreach ((array)$r['SchedulesDays'] as $i=>$day)
-				$schedule[] = ['day' => $day, 'open' => $r['SchedulesOpen'][$i], 'close' => $r['SchedulesClose'][$i]];
-			usort($schedule, 'App\Custom\schedulesort');
-			foreach ((array)$schedule as $schRec)
-				$ss[] = "<span class='weekday'>{$schRec['day']}</span> {$schRec['open']}-{$schRec['close']}";
-		}
-		$r['Schedules']	= implode('<br/>', $ss);
 		$details = [];
 		if ($r['DetailsType'])
 		{	
@@ -216,10 +201,11 @@ class DataMapper
 		}
 		$r['Details'] = $details;
 		
+		/* locations */
 		$r['display_map'] = false;
 		foreach ($rec['location'] ?? [] as $loc)
 		{
-			$r['locations'][] = array_merge($loc, [
+			$r['locations'][$loc['id']] = array_merge($loc, [
 				'display_pin' => $loc['latitude'] && $loc['longitude'],
 				'physical_address' => self::addr($loc['physical_address'] ?? []),
 				'phones' => self::phones($loc['phones'] ?? []),
@@ -228,6 +214,30 @@ class DataMapper
 			if ($loc['latitude'] && $loc['longitude'])
 				$r['display_map'] = true;
 		}
+		/* /locations */
+
+		/* schedules */
+		$ss = [];
+		foreach ($rec['regular_schedule'] ?? [] as $sch)
+			$ss[$sch['location_id'] ?? ''][] = ['day' => trim($sch['weekday']), 'open' => trim($sch['opens_at']), 'close' => trim($sch['closes_at'])];
+		#echo '<pre>';
+		#print_r($rec['regular_schedule']);
+		#print_r($ss);
+		#echo '</pre>';
+		
+		$r['regular_schedule'] = null;
+		foreach ($ss as $locid=>$s)
+		{
+			usort($s, 'App\Custom\schedulesort');
+			$srecs = [];
+			foreach ((array)$s as $srec)
+				$srecs[] = ($srec['day'] ? "<span class='weekday'>{$srec['day']}</span> " : '') . implode($srec['open'] && $srec['close'] ? '-' : '', [$srec['open'], $srec['close']]);
+			if ($locid)
+				$r['locations'][$locid]['regular_schedule'] = implode('<br/>', $srecs);
+			else
+				$r['regular_schedule'] = implode('<br/>', $srecs);
+		}
+		/* /schedules */
 		
 		$r = array_diff_key($r, array_fill_keys(['Address2', 'Address3', 'Address4', 'SchedulesDays', 'SchedulesOpen', 'SchedulesClose', 'DetailsType', 'DetailsValue'], 1));
 		
@@ -330,10 +340,15 @@ class DataMapper
 
 function schedulesort($a, $b)
 {
-	$a = strtotime(preg_replace('~^\W+|\W+$~', '', $a['day']) . " {$a['open']}");
-	$b = strtotime(preg_replace('~^\W+|\W+$~', '', $b['day']) . " {$b['open']}");
-    if ($a == $b) {
-        return 0;
-    }
-    return ($a < $b) ? -1 : 1;	
+	$dd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	foreach ($dd as $i=>$d)
+		if (preg_match("~{$d}~", $a['day']))
+			break;
+	foreach ($dd as $k=>$d)
+		if (preg_match("~{$d}~", $b['day']))
+			break;
+	#$a = strtotime(preg_replace('~\W.*~', '', trim($a['day'])) . " {$a['open']}");
+	#$b = strtotime(preg_replace('~\W.*~', '', trim($b['day'])) . " {$b['open']}");
+    #return $a <=> $b;	
+    return $i <=> $k;
 }

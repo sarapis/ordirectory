@@ -17,7 +17,7 @@
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="col-{{ $data['Schedules'] ? 6 : 12 }} ml-0">
+			<div class="col-{{ $data['regular_schedule'] ? 6 : 12 }} ml-0">
 				@if($data['Phones'] ?? null)
 					<p class="mb-0">tel:&nbsp;&nbsp;{{ implode(', ', (array)$data['Phones']) }}</p>
 				@endif
@@ -51,11 +51,11 @@
 				  </p>
 				@endif
 			</div>
-			@if($data['Schedules'] ?? null)
+			@if($data['regular_schedule'] ?? null)
 				<div class="col-6">
 					<div class="card bg-light mb-3" style="max-width: 18rem;">
 					  <div class="card-body">
-						<p class="card-text">{!! $data['Schedules'] !!}</p>
+						<p class="card-text">{!! $data['regular_schedule'] !!}</p>
 					  </div>
 					</div>
 				</div>
@@ -135,12 +135,19 @@
 							<img src="/img/markerR.png" height="16" width="16" class="mr-1">
 						@endif
 						{{ $loc['physical_address'] }}
+						@if($loc['physical_address'] || $loc['display_pin'])
+							<br/>
+						@endif
 						@if($loc['phones'])
-							@if($loc['physical_address'] || $loc['display_pin'])
-								<br/>
-							@endif
 							<i class="bi-telephone mr-1"></i>
 							{{ $loc['phones'] }}
+							<br/>
+						@endif
+						@if($loc['regular_schedule'])
+							<i class="bi-clock mr-1"></i>
+							<span class="p-0" style="inline-block">
+								{!! $loc['regular_schedule'] !!}
+							</span>
 						@endif
 					</p>
 				@endforeach
