@@ -27,7 +27,7 @@
 					<a class="nav-link">{!! RequestMapper::titleEnc($req, true) !!}</a>
 				@endif
 			</div>
-					<div class="button share-button facebook-share-button" data-network="facebook"><i class="bi-facebook" style="margin-right:.4rem;"></i>share</div>
+					<div class="st-custom-button" data-network="facebook"><i class="bi-facebook" style="margin-right:.4rem;"></i>share</div>
 			<div class="flexmenu-group-right">
 				<div class="nav-link dropdown">
 				  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
