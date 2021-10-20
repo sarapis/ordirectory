@@ -42,16 +42,18 @@
 					<div class="st-custom-button dropdown-item" data-network="sharethis"><i class="bi-share-fill" style="margin-right:.4rem;"></i>sharethis</div>
 				  </div>
 				</div>
-				<div class="nav-link dropdown">
-				  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="bi-download" style="margin-right:.4rem;"></i>Download
-				  </a>
+				@if ($csvLink ?? null)
+					<div class="nav-link dropdown">
+					  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="bi-download" style="margin-right:.4rem;"></i>Download
+					  </a>
 
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="{!! $csvLink !!}"><i class="fas fa-file-csv" style="margin-right:.4rem;"></i>Download CSV</a>
-					<a class="dropdown-item" href="{!! $pdfLink !!}"><i class="fas fa-file-pdf" style="margin-right:.4rem;"></i>Download PDF</a>
-				  </div>
-				</div>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" href="{!! $csvLink !!}"><i class="fas fa-file-csv" style="margin-right:.4rem;"></i>Download CSV</a>
+						<a class="dropdown-item" href="{!! $pdfLink !!}"><i class="fas fa-file-pdf" style="margin-right:.4rem;"></i>Download PDF</a>
+					  </div>
+					</div>
+				@endif
 				<a class="nav-link " id="google_translate_element"></a>
 			</div>
 		</nav>
