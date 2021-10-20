@@ -32,3 +32,5 @@ fonts:
     - Poppins
     - Gemunu Libre
     - Nunito
+pdf:
+    logo_url: img/we_gov_logo_blue.png

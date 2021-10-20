@@ -80,9 +80,20 @@ class DataMapper
 		return $rr;
 	}	
 
+	static function orgExpDetails($data)
+	{
+		$mm = [];
+		$dd = self::orgDetails($data);
+		$ii = ['name' => 'Name', 'descr' => 'Description', 'url' => 'Url', 'email' => 'Email'];
+		foreach ($ii as $k=>$K)
+			$mm[$K] = $dd[$k] ?? '';
+		return $mm;
+	}
+	
+	
 // ---- tiles ------------------------
 
-	static function tilesData($data)
+	static function tilesData($data, $raw=false)
 	{
 		$rr = [];
 		$idx = [
@@ -114,7 +125,7 @@ class DataMapper
 					$r[$f] = $r[$f][0];
 			}
 			$r['descr'] = preg_replace('~\s*(\\\n)+\s*~si', ' ', $r['descr']);
-			if (strlen($r['descr']) > 490)
+			if ((strlen($r['descr']) > 490) and !$raw)
 				$r['descr'] = preg_replace('~\W+\w*$~si', '...', substr($r['descr'], 0, 490));
 			foreach ($rec['location'] ?? [] as $loc)
 			{
@@ -126,9 +137,58 @@ class DataMapper
 			}
 			$rr[] = $r;
 		}
-		#echo '<pre>';
-		#print_r($rr);
-		#echo '</pre>';
+		/*
+		echo '<pre>';
+		print_r($rr);
+		echo '</pre>';
+		*/
+		return $rr;
+	}	
+
+
+	static function tilesExportData($data, $csv=true)
+	{
+		$dd = self::tilesData($data, true);
+		$rr = [];
+		$idx = [
+		/*"Service Name",Category,Organization,Phone,Address,Contact,"Service Description",URL,"Application Process","Wait Time",Fees,Accreditations,Licenses,Details*/
+			'Service Name' => ['key' => 'name', 'subkey' => ''],
+			'Category' => ['key' => 'categories', 'subkey' => ''],
+			'Eligibility' => ['key' => 'eligibility', 'subkey' => ''],
+			'Organization' => ['key' => 'organization', 'subkey' => ''],
+			'Phone' => ['key' => 'locations', 'subkey' => 'phones'],
+			'Address' => ['key' => 'locations', 'subkey' => 'physical_address'],
+			'Service Description' => ['key' => 'descr', 'subkey' => ''],
+		];
+		foreach ($dd as $rec)
+		{
+			$r = [];
+			foreach ($idx as $f=>$keys)
+			{
+				$rec[$keys['key']] = $rec[$keys['key']] ?? '';
+				if (is_array($rec[$keys['key']]) and $keys['subkey'])
+				{
+					foreach ($rec[$keys['key']] as $val)
+						if ($val[$keys['subkey']] ?? null)
+							$r[$f][] = $val[$keys['subkey']];
+				}	
+				else 
+					$r[$f] = $rec[$keys['key']];
+			}
+			if ($csv)
+				$r['Service Description'] = preg_replace('~\s*[\r\n]+\s*~si', '\n', $r['Service Description'] ?? '');
+			foreach ($r as $k=>$v)
+			{
+				if (is_array($v))
+					$r[$k] = implode('; ', $v);
+			}
+			$rr[] = $r;
+		}
+		/*
+		echo '<pre>';
+		print_r($rr);
+		echo '</pre>';
+		*/
 		return $rr;
 	}	
 

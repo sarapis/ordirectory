@@ -32,7 +32,7 @@ class Model
 		foreach (['ServiceName','OrganizationName','TaxonomyName'] as $f)
 			if ($params[$f] ?? null)
 				$params['searchBy'] = $f;
-		if (!preg_match('~^(ServiceName|OrganizationName|TaxonomyName)$~si', $params['searchBy']))
+		if (!preg_match('~^(ServiceName|OrganizationName|TaxonomyName)$~si', $params['searchBy'] ?? ''))
 			return [];
 		$params = array_merge([
 				'page' => 1,

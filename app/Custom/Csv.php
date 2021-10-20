@@ -18,7 +18,7 @@ class Csv
 			$tmp = [];
 			foreach ($ff as $f)
 			{
-				$v = $d[$f];
+				$v = $d[$f] ?? '';
 				if (is_real($v))
 					$v = $decimalConv ? str_replace(".", ",", (string)$d[$f]) : (string)$d[$f];
 				$v = $quot ? str_replace($quot, $quot . $quot, $v) : $v;
