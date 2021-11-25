@@ -131,19 +131,19 @@
 				@foreach ($data['locations'] ?? [] as $loc)
 					<h5 class="mt-1">{{ $loc['name'] }}</h5>
 					<p class="address">
-						@if($loc['display_pin'])
+						@if($loc['display_pin'] ?? null)
 							<img src="/img/markerR.png" height="16" width="16" class="mr-1">
 						@endif
-						{{ $loc['physical_address'] }}
-						@if($loc['physical_address'] || $loc['display_pin'])
+						{{ $loc['physical_address']  ?? ''}}
+						@if($loc['physical_address'] ?? null || $loc['display_pin'] ?? null)
 							<br/>
 						@endif
-						@if($loc['phones'])
+						@if($loc['phones'] ?? null)
 							<i class="bi-telephone mr-1"></i>
 							{{ $loc['phones'] }}
 							<br/>
 						@endif
-						@if($loc['regular_schedule'])
+						@if($loc['regular_schedule'] ?? null)
 							<i class="bi-clock mr-1"></i>
 							<span class="p-0" style="inline-block">
 								{!! $loc['regular_schedule'] !!}
