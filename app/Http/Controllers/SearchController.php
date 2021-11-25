@@ -166,7 +166,8 @@ class SearchController extends Controller
 		#header('Content-Type: application/pdf');
 		#header('Content-Disposition: attachment; filename="' . $fn . '";');
 
-		$pdf = new PDF($title, $hh, Yaml::parse(file_get_contents(base_path() . '/design.yml'))['pdf']['logo_url']);
+		#$pdf = new PDF($title, $hh, Yaml::parse(file_get_contents(base_path() . '/design.yml'))['pdf']['logo_url']);
+		$pdf = new PDF($title, $hh, Yaml::parse(file_get_contents(base_path() . '/design.yml'))['actionbar']['main_text']);
 		$pdf->AddPage('L');
 		$pdf->AliasNbPages();
 		$pdf->SetFont('Arial','B',10);

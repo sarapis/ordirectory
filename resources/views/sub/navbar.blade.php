@@ -49,8 +49,8 @@
 					  </a>
 
 					  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="{!! $csvLink !!}"><i class="fas fa-file-csv" style="margin-right:.4rem;"></i>Download CSV</a>
-						<a class="dropdown-item" href="{!! $pdfLink !!}"><i class="fas fa-file-pdf" style="margin-right:.4rem;"></i>Download PDF</a>
+						<a class="dropdown-item" href="{!! $csvLink !!}" target="_blank"><i class="fas fa-file-csv" style="margin-right:.4rem;"></i>Download CSV</a>
+						<a class="dropdown-item" href="{!! $pdfLink !!}" target="_blank"><i class="fas fa-file-pdf" style="margin-right:.4rem;"></i>Download PDF</a>
 					  </div>
 					</div>
 				@endif

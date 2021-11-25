@@ -23,7 +23,7 @@
 				@endif
 					
 				@if($data['Website'] ?? null)
-					<p class="mb-0">url:&nbsp;&nbsp;<a href="{{ $data['Website'] }}">{{ $data['Website'] }}</a></p>
+					<p class="mb-0">url:&nbsp;&nbsp;<a href="{{ $data['Website'] }}" target="_blank">{{ $data['Website'] }}</a></p>
 				@endif
 				
 				@if($data['Languages'] ?? null)

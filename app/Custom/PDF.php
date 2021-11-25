@@ -21,10 +21,14 @@ class PDF extends Fpdf
 		// Logo
 		#$this->Image('logo.png',10,-1,70);
 		if ($this->logo)
-			$this->Image(public_path($this->logo),10,8,50);
+		{
+			#$this->Image(public_path($this->logo),10,8,50);
+			$this->SetFont('Arial','B',15);
+			$this->Cell(120,10,$this->logo,0,0,'L');
+		}
 		$this->SetFont('Arial','B',10);
 		// Move to the right
-		$this->Cell(80);
+		#$this->Cell(80);
 		// Title
 		$this->Cell(80,10,$this->title,0,0,'C');
 		// Line break
