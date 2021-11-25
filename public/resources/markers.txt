@@ -1,3 +1,18 @@
 point	title	description	iconSize	iconOffset	icon
-39.0178048,-76.9197707	<a href="service/864041028832460">Adult Medicine</a>	(301) 441-1605, (301) 345-1609<br/>10001 Rhode Island Ave<br/>College Park, MD 20740, US	25,25	-12,-25	img/markerR.png
-38.9116973,-76.9339447	<a href="service/864041028832460">Adult Medicine</a>	(202) 803-2350, (202) 803-2340<br/>1627 Kenilworth Ave. NE<br/>Washington, DC 20019, US	25,25	-12,-25	img/markerR.png
+38.9075729,-77.0314836	<a href="service/1125987342546107">Bethany Day Center</a>	(202) 939-1380, (202) 939-2076<br/>1333 N St NW<br/>Washington, DC 20005, US	25,25	-12,-25	img/markerR.png
+38.8548975,-76.9844872	<a href="service/867810178957304">Community Markets</a>	(202) 328-6608<br/>2375 Elvans Rd. SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.8662494,-76.9810927	<a href="service/619060926571379">COVID-19 Grocery Delivery</a>	(202) 386-7016, (202) 561-8587, (202) 587-0530<br/>1640 Good Hope Road SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9103106,-77.021587	<a href="service/619060926571379">COVID-19 Grocery Delivery</a>	(202) 265-2400, (202) 386-7020<br/>1525 7th St NW<br/>Washington, DC 20001, US	25,25	-12,-25	img/markerR.png
+38.8460534,-76.9971121	<a href="service/790527027022440">EBT</a>	(202) 562-3800<br/>2907 Martin Luther King Jr Ave SE<br/>Washington, DC 20032, US	25,25	-12,-25	img/markerR.png
+38.865727,-76.9807327	<a href="service/790527027022440">EBT</a>	(202) 610-5900<br/>1649 Good Hope Rd SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9088439,-77.0114197	<a href="service/978823191463999">Food Pantry</a>	(202) 797-8806<br/>71 O St NW<br/>Washington, DC 20001, US	25,25	-12,-25	img/markerR.png
+38.8435269,-76.9742231	<a href="service/1011096322447568">Food Pantry</a>	(202) 610-9600, 1 (800) 535-7252<br/>2001 Mississippi Ave SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9327313,-77.0373987	<a href="service/1196312610753230">Food Pantry</a>	(202) 939-2400<br/>1618 Monroe St NW<br/>Washington, DC 20010, US	25,25	-12,-25	img/markerR.png
+38.8662494,-76.9810927	<a href="service/1193500689688597">Food Pantry Monthly Food Supplement</a>	(202) 386-7016, (202) 561-8587, (202) 587-0530<br/>1640 Good Hope Road SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9103106,-77.021587	<a href="service/1193500689688597">Food Pantry Monthly Food Supplement</a>	(202) 265-2400, (202) 386-7020<br/>1525 7th St NW<br/>Washington, DC 20001, US	25,25	-12,-25	img/markerR.png
+38.9556534,-77.0021964	<a href="service/748538600142879">Groceries-to-go</a>	219 Riggs Road<br/>Washington, DC 20011, US	25,25	-12,-25	img/markerR.png
+38.9556534,-77.0021964	<a href="service/905112130077089">Home Delivered Meals</a>	219 Riggs Road<br/>Washington, DC 20011, US	25,25	-12,-25	img/markerR.png
+38.8548975,-76.9844872	<a href="service/925876618282340">Martha's Table Markets</a>	(202) 328-6608<br/>2375 Elvans Rd. SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9269851,-77.0349922	<a href="service/925876618282340">Martha's Table Markets</a>	(202) 328-6608<br/>1474 Columbia Rd NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
+38.9003849,-77.0135255	<a href="service/1298850689126022">McKenna's Wagon</a>	(202) 328-6608<br/>807 2nd St<br/>NW, Washington, DC 20001, US	25,25	-12,-25	img/markerR.png
+38.9024168,-77.0345695	<a href="service/1298850689126022">McKenna's Wagon</a>	(202) 328-6608<br/>15th St NW & K Street Northwest<br/>Washington, DC 20005, US	25,25	-12,-25	img/markerR.png

@@ -15,7 +15,7 @@ navbar:
     bck_color: '##E7245E'
     translation_languages: en,es
 actionbar:
-    main_text: DC Next Service Directory
+    main_text: DC NEXT! Community Resource Directory
     submit_button_text: Search
 footer:
     text: Data last updated <i>June 2<small>nd</small> 2021</i>
