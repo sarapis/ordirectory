@@ -29,10 +29,10 @@ class Model
 
 	static function getServices(&$params)
 	{
-		foreach (['ServiceName','OrganizationName','TaxonomyName'] as $f)
+		foreach (['ServiceName','OrganizationName','NameSearch','TaxonomyName'] as $f)
 			if ($params[$f] ?? null)
 				$params['searchBy'] = $f;
-		if (!preg_match('~^(ServiceName|OrganizationName|TaxonomyName)$~si', $params['searchBy'] ?? ''))
+		if (!preg_match('~^(ServiceName|OrganizationName|NameSearch|TaxonomyName)$~si', $params['searchBy'] ?? ''))
 			return [];
 		$params = array_merge([
 				'page' => 1,
@@ -58,10 +58,11 @@ class Model
 		$reqs = [
 			'ServiceName' => "?queries=name:{$value}|{$strict}&{$ppp}",
 			'OrganizationName' => "?queries=organization:{$value}|{$strict}&{$ppp}",
+			'NameSearch' => "?queries=namesearch:{$value}|{$strict}&{$ppp}",
 			'TaxonomyName' => sprintf('/%s?queries=%s|%s&%s', preg_replace('~%2f~si', '/', $value), $strict, $taxonomyFamily, $ppp)
 		];
 		$req = $reqs[$field];
-		#echo $req;
+		#echo config('conf.APIENTRY') . '/services/complete' . $req;
 		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
 		{

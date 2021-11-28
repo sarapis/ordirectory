@@ -62,8 +62,8 @@ class CronJobCommand extends Command
 				continue;
 		} while($pn <= $ss['total_pages']);
 		sort($services);
-		file_put_contents($localDataPath . '/servicesAutocomplete.json', json_encode($services));
-		echo 'services processed: ' . count($services) . "\n"; flush();
+		#file_put_contents($localDataPath . '/servicesAutocomplete.json', json_encode($services));
+		#echo 'services processed: ' . count($services) . "\n"; flush();
 
 
 		$orgs = [];
@@ -80,8 +80,13 @@ class CronJobCommand extends Command
 				continue;
 		} while($pn <= $oo['total_pages']);
 		sort($orgs);
-		file_put_contents($localDataPath . '/organizationsAutocomplete.json', json_encode($orgs));
-		echo 'orgs processed: ' . count($orgs) . "\n"; flush();
+		#file_put_contents($localDataPath . '/organizationsAutocomplete.json', json_encode($orgs));
+		#echo 'orgs processed: ' . count($orgs) . "\n"; flush();
+
+		$namesearch = array_merge($services, $orgs);
+		sort($namesearch);
+		file_put_contents($localDataPath . '/namesearchAutocomplete.json', json_encode($namesearch));
+		echo 'namesearch processed: ' . count($namesearch) . "\n"; flush();
 
         return 0;
     }
