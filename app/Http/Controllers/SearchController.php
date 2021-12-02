@@ -70,6 +70,9 @@ class SearchController extends Controller
     {
 		$m = Model::engine();
 		$data = $m->getService($id);
+		#print_r($data);
+		if (!($data['success'] ?? true))
+			return abort(404);
 		$data = DataMapper::serviceCard($data);
         return view('service', [
 					'id' => $id,

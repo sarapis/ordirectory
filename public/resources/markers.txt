@@ -1,3 +1,22 @@
 point	title	description	iconSize	iconOffset	icon
-38.9550997,-77.0040411	<a href="service/1287171138930601">Free Counseling Services</a>	(202) 333-7273, (202) 232-0789, (202) 328-1371, (202) 723-0480<br/>5321 First Place NE<br/>Washington, DC 20011, US	25,25	-12,-25	img/markerR.png
-38.8659856,-76.9897776	<a href="service/618510425235763">Ward 8 Drug Free Coalition</a>	(202) 889-2213, (202) 889-1425<br/>	25,25	-12,-25	img/markerR.png
+38.8659856,-76.9897776	<a href="service/1102032278098336">'Milestones' Supervised Visitation</a>	(202) 889-2213, (202) 889-1425<br/>2041 Martin Luther King Jr. Ave<br/>SE, 4th Floor, Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.8548975,-76.9844872	<a href="service/1208941632060908">Anacostia Family Success Center</a>	(202) 328-6608<br/>2375 Elvans Rd. SE<br/>Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.9167234,-77.0336428	<a href="service/937636854587265">Batterer Intervention Program</a>	(202) 529-5261<br/>1436 U St NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
+38.900787,-76.9780775	<a href="service/1185359834982349">Birth Services</a>	(202) 398-5520<br/>801 17th Street<br/>NE , Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.894903,-76.9955839	<a href="service/1071954080796084">Chloe's House</a>	(202) 547-7777, (202) 675-9340<br/>701 Maryland Avenue NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.8940638,-76.9346425	<a href="service/837150649376459">Classes and Groups</a>	(202) 248-2877, (202) 248-3434<br/>311 47th Street NE<br/>Washington, DC 20019, US	25,25	-12,-25	img/markerR.png
+38.8448695,-76.9871775	<a href="service/936906190018086">Community Impact Centers</a>	1351 Alabama Ave SE<br/>Washington, DC 20032, US	25,25	-12,-25	img/markerR.png
+38.8592798,-76.9949298	<a href="service/936906190018086">Community Impact Centers</a>	2616 Martin Luther King Jr. Ave<br/>SE, Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
+38.8277704,-77.0027121	<a href="service/936906190018086">Community Impact Centers</a>	4315 3rd St SE<br/>Washington, DC 20032, US	25,25	-12,-25	img/markerR.png
+38.9280998,-77.0329341	<a href="service/798441899320042">Comprehensive Medical Care for Deaf Adults and Children (CODA)</a>	(202) 469-4699<br/>3020 14th Street NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
+38.9010559,-77.0085403	<a href="service/990059361209852">DC Healthy Start</a>	(202) 442-5955<br/>899 N Capitol St NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.9010559,-77.0085403	<a href="service/990059361209852">DC Healthy Start</a>	202-442-5955, 202-442-4795<br/>899 North Capitol St NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.8970231,-76.991825	<a href="service/572309695509941">DC Prevention Center</a>	(202) 546-4900<br/>1022 Maryland Ave NE<br/>Washington, DC 20002, US	25,25	-12,-25	img/markerR.png
+38.9277554,-77.0332829	<a href="service/573886519226225">DC Prevention Center Wards 1-2</a>	(202) 319-2225, (202) 462-5696<br/>1419 Columbia Rd NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
+38.9287881,-77.0143272	<a href="service/849020259682919">Discharge Planning and Social Work Support Services</a>	110 Irving St.<br/>NW, Washington, DC 20010, US	25,25	-12,-25	img/markerR.png
+38.9392032,-77.0255908	<a href="service/1281873572081806">Domestic Violence Support</a>	(202) 483-8196, (844) 796-2797<br/>3912 Georgia Avenue<br/>NW, Washington, DC 20011, US	25,25	-12,-25	img/markerR.png
+38.9529194,-77.0074605	<a href="service/1281873572081806">Domestic Violence Support</a>	(202) 483-8196<br/>100 Gallatin Street NE<br/>Washington, DC 20011, US	25,25	-12,-25	img/markerR.png
+38.8937514,-76.9495877	<a href="service/1236034161171034">East River Family Strengthening Collaborative</a>	3917 Minnesota Ave NE<br/>Washington, DC 20019, US	25,25	-12,-25	img/markerR.png
+38.9075729,-77.0314836	<a href="service/1129022337432214">Eden House</a>	1333 N St NW<br/>Washington, DC 20005, US	25,25	-12,-25	img/markerR.png
+38.8313484,-77.008632	<a href="service/1107196998383990">Enroll in Insurance</a>	(202) 540-9862, (202) 540-9857, (202) 407-7747<br/>4 Atlantic Street<br/>SW, Washington, DC 20032, US	25,25	-12,-25	img/markerR.png
+38.9192027,-77.0403449	<a href="service/1107196998383990">Enroll in Insurance</a>	(202) 213- 1622<br/>2250 Champlain St NW<br/>Washington, DC 20009, US	25,25	-12,-25	img/markerR.png

@@ -22,7 +22,7 @@
 				</div>
 			  --}}
 				<div class="col-12 namesearch-outer">
-					<input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Name Search" name="NameSearch" id="namesearch">
+					<input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Search for resources" name="NameSearch" id="namesearch">
 					<div class="reset-button">
 						<button class="inactive" onclick="val_reset();" type="button">
 							<i class="bi bi-x-square"></i>

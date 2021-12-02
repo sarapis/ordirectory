@@ -353,8 +353,9 @@ class DataMapper
 			$dLat = ($maxLat - $minLat) / 2;
 			$dLon = ($maxLon - $minLon) / 2;
 			$scale = self::mapScale($dLat, $dLon);
+			return [implode("\n", $rr) . "\n", compact(['cLat', 'cLon', 'scale'])];
 		}
-		return [implode("\n", $rr) . "\n", compact(['cLat', 'cLon', 'scale'])];
+		return '';
 	}	
 
 	static function mapScale($dLat, $dLon)
