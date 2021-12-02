@@ -150,6 +150,7 @@ body{
           border-radius: 8px;
   outline: none;
 }
+.tt-hint {color:white!important;}
 
 .typeahead {
   background-color: #fff;
