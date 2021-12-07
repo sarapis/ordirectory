@@ -3,11 +3,12 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ $title }}</title>
+    <title>{{ $design['head']['title'] }}</title>
 
 	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=61660f404564d200122a7def&product=sop'></script>
     <!-- Fonts -->
-    <link rel="shortcut icon" href="/img/fachclogo.png" type="image/png" />
+    <!--<link rel="shortcut icon" href="/img/fachclogo.png" type="image/png" />-->
+    <link rel="shortcut icon" href="{!! $design['head']['icon'] !!}" type="image/{{ preg_match('~\.png$~', $design['head']['icon']) ? 'png' : 'x-icon'}}" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,13 +25,41 @@
 	@endforeach
 	@yield('styles')
 	<style>
-		#topmenu {background-color: {{ $design['topmenu']['bck_color'] }}}
-		#topmenu {color: {{ $design['topmenu']['site_name_color'] }}}
-		#topmenu a.top-link {color: {{ $design['topmenu']['site_name_color'] }}}
-		nav.navbar {background-color: {{ $design['navbar']['bck_color'] }}}
+		#topmenu {background-color: #{{ $design['topmenu']['bck_color'] }}}
+		#topmenu {color: #{{ $design['topmenu']['site_name_color'] }}}
+		/*#topmenu a.top-link {color: #{{ $design['topmenu']['site_name_color'] }}}*/
+		nav.navbar {background-color: #{{ $design['navbar']['bck_color'] }}}
 		@foreach ($design['styles'] as $style)
 			{{ $style['selector'] }} {{!! $style['style'] !!}}
 		@endforeach
+		
+		@php
+			$cols = [
+				'link' => ['a.customized', '#bottommenu a', '.goog-te-gadget-simple .goog-te-menu-value span:before'],
+				'taxonomy-link' => ['#taxonomy button', '#taxonomy a'],
+				'pagination-link' => ['.page-link'],
+				#'button' => ['button.customized'],
+			];
+			$bcks = [
+				'pagination-link' => ['.page-item.active .page-link'],
+				'button' => ['button.customized'],
+				'tag' => ['.badge-info'],
+				'service-card' => ['#sGrid .card'],
+			];
+		@endphp
+		
+		@foreach ($design['style-colors'] as $element=>$cc)
+		  @foreach (explode(', ', $cc) as $i=>$c)
+			@foreach ($cols[$element] ?? [] as $sel)
+			  {{ $sel }}{{ $i ? ':hover' : '' }} {color:#{!! $c !!};}
+			@endforeach
+			@foreach ($bcks[$element] ?? [] as $sel)
+			  {{ $sel }}{{ $i ? ':hover' : '' }} {background-color:#{!! $c !!};}
+			  {{ $sel }}{{ $i ? ':hover' : '' }} {border-color:#{!! $c !!};}
+			@endforeach
+		  @endforeach
+		@endforeach
+		
 	</style>
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>

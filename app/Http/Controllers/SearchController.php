@@ -18,7 +18,7 @@ class SearchController extends Controller
 					'data' => json_decode(file_get_contents(public_path() . '/resources/taxonomyCatalog.json'), true),
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
 					'req' => $_GET,
-					'title' => 'DC New Social Services Site',
+					#'title' => 'DC New Social Services Site',
 				]);
     }
 
@@ -41,7 +41,7 @@ class SearchController extends Controller
 				'req' => $_GET,
 				'mapcenter' => $mapCenter,
 				'tiles' => DataMapper::tilesData($data['items'] ?? []),
-				'title' => 'DC Social Services Search',
+				#'title' => 'DC Social Services Search',
 				'csvLink' => route('servicescsv') . '?' . http_build_query($_GET),
 				'pdfLink' => route('servicespdf') . '?' . http_build_query($_GET),
 			]);
@@ -78,7 +78,7 @@ class SearchController extends Controller
 					'id' => $id,
 					'data' => $data,
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
-					'title' => $data['Service Name'],
+					#'title' => $data['Service Name'],
 					'csvLink' => route('servicecsv', $id),
 					'pdfLink' => route('servicepdf', $id),
 				]);
@@ -126,7 +126,7 @@ class SearchController extends Controller
 					'mapcenter' => $mapCenter,
 					'org' => DataMapper::orgDetails((array)$data['items'] ?? []),
 					'tiles' => DataMapper::tilesData((array)$data['items'] ?? []),
-					'title' => $data['items'][0]['organization']['name'] ?? '',
+					#'title' => $data['items'][0]['organization']['name'] ?? '',
 					'csvLink' => route('organizationcsv') . '?' . http_build_query($_GET),
 					'pdfLink' => route('organizationpdf') . '?' . http_build_query($_GET),
 				]);

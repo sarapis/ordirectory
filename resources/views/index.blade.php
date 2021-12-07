@@ -31,7 +31,7 @@
 				</div>
 				<div class="col-6">
 					<div class="input-group my-4 ">
-						<button style="min-width:8em;" type="submit" class="btn btn-primary">{{ $design['actionbar']['submit_button_text'] }}</button>
+						<button style="min-width:8em;" type="submit" class="btn btn-primary customized">{{ $design['actionbar']['submit_button_text'] }}</button>
 							{{--<button style="min-width:8em;"  type="reset" class="btn btn-light ml-2" onclick="document.location.assign('search.php');">Reset</button>--}}
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 			  <h4 class="pt-5 mb-5" style="border-top: 1px solid #ccc; text-align:center;">Browse by Category</h4>
 		    </div>
 		  </div>
-		  <div id="accordion">
+		  <div id="taxonomy">
 			  <div class="row">
 				  @foreach ($data as $col)
 					<div class="col-6">
@@ -64,7 +64,7 @@
 							  </h5>
 							</div>
 
-							<div id="collapse-{{ $card['code'] }}" class="collapse" aria-labelledby="card-{{ $card['code'] }}" data-parent="#accordion">
+							<div id="collapse-{{ $card['code'] }}" class="collapse" aria-labelledby="card-{{ $card['code'] }}" data-parent="#taxonomy">
 							  <div class="card-body">
 								@foreach ($card['items'] as $item)
 									@if($item['items'])

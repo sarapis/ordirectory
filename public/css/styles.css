@@ -64,7 +64,7 @@ body{
 	padding-left: 0;
 }  
 #google_translate_element{
-	width: 130px;
+	width: 160px;
 	/*position: absolute;
 	right: 32px;*/
 }
@@ -273,7 +273,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .fa:before {
 a[data-toggle="collapse"][aria-expanded="false"] .fa:before {
 	content: "+";
 }
-#accordion a, #accordion button {text-decoration:none !important; color:#2600e6;}
+#taxonomy a, #taxonomy button {text-decoration:none !important; color:#2600e6;}
 button {text-decoration:none !important;}
 p {margin-bottom:0.5em;}
 p .btn-link {padding:0; border:0;}

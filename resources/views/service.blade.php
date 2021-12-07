@@ -12,7 +12,7 @@
 		  <div class="row">
 			<div class="col">
 				<h2>{{ $data['Service Name'] }}</h2>
-				<h6>Organization: <a href="/organization?searchBy=OrganizationName&OrganizationName={{ ($data['Organization Name']) }}">{{ $data['Organization Name'] }}</a></h6>
+				<h6>Organization: <a href="/organization?searchBy=OrganizationName&OrganizationName={{ ($data['Organization Name']) }}" class="customized">{{ $data['Organization Name'] }}</a></h6>
 				<p class="description85">{!! $data['Description'] !!}</p>
 			</div>
 		  </div>
@@ -23,7 +23,7 @@
 				@endif
 					
 				@if($data['Website'] ?? null)
-					<p class="mb-0">url:&nbsp;&nbsp;<a href="{{ $data['Website'] }}" target="_blank">{{ $data['Website'] }}</a></p>
+					<p class="mb-0">url:&nbsp;&nbsp;<a href="{{ $data['Website'] }}" class="customized" target="_blank">{{ $data['Website'] }}</a></p>
 				@endif
 				
 				@if($data['Languages'] ?? null)

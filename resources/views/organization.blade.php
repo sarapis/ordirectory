@@ -16,11 +16,11 @@
 						<h2>{{ $org['name'] }}</h2>
 						<p class="description85">{{ $org['descr'] }}</p>
 						@if($org['url'])
-							<p class="mb-0">url:&nbsp;&nbsp;<a href="{!! $org['url'] !!}" target="_blank">{{ $org['url'] }}</a></p>
+							<p class="mb-0">url:&nbsp;&nbsp;<a href="{!! $org['url'] !!}" class="customized" target="_blank">{{ $org['url'] }}</a></p>
 						@endif
 							
 						@if($org['email'])
-							<p class="mb-0">email:&nbsp;&nbsp;<a href="mailto:{!! $org['email'] !!}" target="_blank">{{ $org['email'] }}</a></p>
+							<p class="mb-0">email:&nbsp;&nbsp;<a href="mailto:{!! $org['email'] !!}" class="customized" target="_blank">{{ $org['email'] }}</a></p>
 						@endif
 					</div>
 

@@ -1,9 +1,13 @@
+head:
+    title: DC New Social Services Site
+    icon: https://img.icons8.com/office/16/000000/chatbot.png
+
 topmenu:
     turned_on: false
     logo_url: /img/we-gov-logo.png
     site_name: DC New Supersite
-    site_name_color: '#FFEEFF'
-    bck_color: '#FFAEFF'
+    site_name_color: FFEEFF
+    bck_color: FFAEFF
     links:
         - text: Primary
           url: /primary
@@ -11,15 +15,20 @@ topmenu:
           url: /secondary
         - text: Tertiary
           url: /tertiary
+
 navbar:
-    bck_color: '##E7245E'
+    bck_color: ffc107
     translation_languages: en,es
+
 actionbar:
     main_text: DC NEXT! Community Resource Directory
     submit_button_text: Search
-footer:
-    extext: Data last updated <i>June 2<small>nd</small> 2021</i>
-    text: Community Resource Exchange
+
+fonts:
+    - Poppins
+    - Gemunu Libre
+    - Nunito
+
 styles:
     - selector: body
       style: "font-family: 'Poppins', sans-serif; font-size: 1rem;"
@@ -29,9 +38,20 @@ styles:
       style: "margin-top:-3px; margin-right:-25px; text-align:left;"
     - selector: "#top-title h2"
       style: "font-family: 'Poppins', sans-serif; font-size: 32px;"
-fonts:
-    - Poppins
-    - Gemunu Libre
-    - Nunito
+
+style-colors:
+# Normal, Hover if different
+    link: 0056b3, fd7e14
+    taxonomy-link: 0056b3, fd7e14
+    pagination-link: 0069d9, fd7e14
+    button: 0069d9, fd7e14
+    tag: 6f42c1
+    service-card: ffffff, 17a2b8
+    
+
+footer:
+    extext: Data last updated <i>June 2<small>nd</small> 2021</i>
+    text: Community Resource Exchange
+
 pdf:
     logo_url: img/we_gov_logo_blue.png
