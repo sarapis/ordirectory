@@ -82,7 +82,7 @@
 		  <div class="row mt-3">
 			<div class="col">
 				@if($geojson)
-					<div class="sticky-top" style="height:49vh;" id="map">
+					<div class="sticky-top" style="height:49vh; position: -webkit-sticky; position: sticky;" id="map">
 						<script type="text/javascript">
 							window.onload = function() {
 								newMap()
