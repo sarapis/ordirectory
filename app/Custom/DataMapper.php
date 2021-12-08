@@ -307,7 +307,44 @@ class DataMapper
 		return $r;
 	}
 
-	static function markers($data)
+	static function geojson($data)
+	{
+		$mm = [];
+		foreach ((array)$data as $rec)
+		{
+			foreach ($rec['location'] ?? [] as $i=>$loc)
+				if ((real)trim($loc['latitude'] ?? null) && (real)trim($loc['longitude'] ?? null))
+				{
+					$byOrg = ($rec['organization']['name'] ?? null) ? "<br/><small><i>by {$rec['organization']['name']}</i></small>" : '';
+					$srv = $rec['name'] ?? '';
+					$phones = self::phones($loc['phones'] ?? []);
+					$addr = self::addr($loc['physical_address'] ?? []);
+					$mm[] = [
+						'type' => 'Feature',
+						'geometry'=> [
+							'type' => 'Point',
+							'coordinates' => [(real)trim($loc['longitude']), (real)trim($loc['latitude'])]
+						],
+						'properties' => [
+							'id' => $rec['id'],
+							'service' => $srv,
+							'organization' => $rec['organization']['name'] ?? '',
+							'phone' => $phones,
+							'address' => $addr,
+							'lat' => (real)trim($loc['latitude']),
+							'lon' => (real)trim($loc['longitude']),
+							'title' => "<a href=\"/service/{$rec['id']}\">{$rec['name']}{$byOrg}</a>",
+							'description' => ($phones ? "{$phones}<br/>" : '') .
+										//"{$rec['address']}<br/>{$rec['city']}, {$rec['state']}, {$rec['zip']}",
+										preg_replace('~, ~', '<br/>', $addr ?? '', 1),
+						]
+					];
+				}
+		}
+		return $mm ? ['type' => 'FeatureCollection', 'features' => $mm] : '';
+	}	
+
+	static function markers_depr($data)
 	{
 		$mm = [];
 		foreach ((array)$data as $rec)

@@ -230,6 +230,21 @@ table td,
 	min-width: 90px;
 }
 
+/* mapbox */
+.marker {
+	display: block;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	width: 25px;
+	height: 25px;
+	background-size: 25px;
+}
+
+.mapboxgl-popup-content {padding:8px; overflow: hidden !important;font-size:0.75em;border-radius:10px;}
+.mapboxgl-popup-content a {text-decoration:initial; color:#002b80;font-size:1.2em;}
+
+
 /* openstreetmaps */
 
 #basicMap {
@@ -259,6 +274,8 @@ table td,
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
+
+.dropdown-menu {z-index:10000;}
 
 
 /* taxonomy catalog */

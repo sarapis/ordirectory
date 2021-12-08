@@ -81,31 +81,16 @@
 		<div class="col-5">
 		  <div class="row mt-3">
 			<div class="col">
-				@if($data['display_map'])
-					<script src="/OpenLayers/OpenLayers.min.js"></script>
-					<div id="basicMap"></div>
-					<script>
-						map = new OpenLayers.Map("basicMap");
-						var mapnik         = new OpenLayers.Layer.OSM();
-						var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-						var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-						{{--var position       = new OpenLayers.LonLat({{ is_array($data['Lng']) ? $data['Lng'][0] : $data['Lng'] }},{{ is_array($data['Lat']) ? $data['Lat'][0] : $data['Lat'] }}).transform( fromProjection, toProjection);--}}
-						var zoom           = 13; 
-
-						map.addLayer(mapnik);
-
-						var size = new OpenLayers.Size(25,25);
-						var offset = new OpenLayers.Pixel(-12,-25);
-						var icon = new OpenLayers.Icon('/img/markerR.png',size,offset);
-						var markers = new OpenLayers.Layer.Markers("Markers");
-						map.addLayer(markers);
-						@foreach($data['locations'] as $loc)
-							markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat({{ $loc['longitude'] }},{{ $loc['latitude'] }}).transform( fromProjection, toProjection), icon));
-						@endforeach
-
-						//map.setCenter(position, zoom);
-						map.setCenter(new OpenLayers.LonLat({{ $loc['longitude'] }},{{ $loc['latitude'] }}).transform( fromProjection, toProjection), zoom);
-					</script>
+				@if($geojson)
+					<div class="sticky-top" style="height:49vh;" id="map">
+						<script type="text/javascript">
+							window.onload = function() {
+								newMap()
+								var geojson = {!! json_encode($geojson) !!}
+								drawMarkers(geojson)
+							}
+						</script>
+					</div>
 				@else	
 					<div id="basicMapPlaceholder">
 						<p class="mb-0">Geocoordinates not available<br/>

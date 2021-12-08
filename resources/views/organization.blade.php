@@ -77,31 +77,14 @@
 				
 					
 				<div class="col-5">
-				  @if($mapcenter['scale'] ?? null)
+				  @if($geojson)
 					<div class="sticky-top" style="height:99vh;" id="map">
-						
-						<style>
-							.olPopup {border-radius:15px;}
-							.olPopupContent {padding:15px; overflow: hidden !important;}
-							.olPopupContent a {text-decoration:initial; color:#002b80;}
-							.olPopup h2 {font-size:1em;}
-							.olPopup p {font-size:0.75em;}
-						</style>
-						<script src="./OpenLayers/OpenLayers.min.js"></script>
-						
 						<script type="text/javascript">
-							var map, layer;
-
-							map = new OpenLayers.Map("map");
-							var mapnik = new OpenLayers.Layer.OSM();
-							map.addLayer(mapnik);
-							var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-							var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-							
-							var newl = new OpenLayers.Layer.Text( "text", { location:"./resources/markers_org.txt"} );
-							map.addLayer(newl);
-
-							map.setCenter(new OpenLayers.LonLat({{ $mapcenter['cLon'] }},{{ $mapcenter['cLat'] }}).transform(fromProjection, toProjection), {{ $mapcenter['scale'] }});
+							window.onload = function() {
+								newMap()
+								var geojson = {!! json_encode($geojson) !!}
+								drawMarkers(geojson)
+							}
 						</script>
 					</div>
 				  @else

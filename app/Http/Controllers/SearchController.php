@@ -33,13 +33,14 @@ class SearchController extends Controller
 					'req' => $_GET,
 				]);
 				
-		list($markers, $mapCenter) = DataMapper::markers($data['items'] ?? []);
-		file_put_contents(public_path() . '/resources/markers.txt', $markers);
+		//list($markers, $mapCenter) = DataMapper::markers($data['items'] ?? []);
+		//file_put_contents(public_path() . '/resources/markers.txt', $markers);
 		return view('services', [
 				'data' => $data,
 				'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
 				'req' => $_GET,
-				'mapcenter' => $mapCenter,
+				//'mapcenter' => $mapCenter,
+				'geojson' => DataMapper::geojson($data['items'] ?? []),
 				'tiles' => DataMapper::tilesData($data['items'] ?? []),
 				#'title' => 'DC Social Services Search',
 				'csvLink' => route('servicescsv') . '?' . http_build_query($_GET),
@@ -73,12 +74,11 @@ class SearchController extends Controller
 		#print_r($data);
 		if (!($data['success'] ?? true))
 			return abort(404);
-		$data = DataMapper::serviceCard($data);
         return view('service', [
 					'id' => $id,
-					'data' => $data,
+					'data' => DataMapper::serviceCard($data),
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
-					#'title' => $data['Service Name'],
+					'geojson' => DataMapper::geojson([$data] ?? []),
 					'csvLink' => route('servicecsv', $id),
 					'pdfLink' => route('servicepdf', $id),
 				]);
@@ -109,6 +109,7 @@ class SearchController extends Controller
 			return back();
 		$m = Model::engine();
 		$data = $m->getServices($_GET);
+		//return json_encode($data);
 		if (($data['message'] ?? null) == 'Rate limit exceeded')
 			return view('alert', [
 					'alert' => 'API rate limit exceeded',
@@ -116,16 +117,17 @@ class SearchController extends Controller
 					'req' => $_GET,
 				]);
 
-		list($markers, $mapCenter) = DataMapper::markers($data['items'] ?? []);
-		file_put_contents(public_path() . '/resources/markers_org.txt', $markers);
+		//list($markers, $mapCenter) = DataMapper::markers($data['items'] ?? []);
+		//file_put_contents(public_path() . '/resources/markers_org.txt', $markers);
 
         return view('organization', [
 					'data' => $data,
 					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
 					'req' => $_GET,
-					'mapcenter' => $mapCenter,
-					'org' => DataMapper::orgDetails((array)$data['items'] ?? []),
-					'tiles' => DataMapper::tilesData((array)$data['items'] ?? []),
+					//'mapcenter' => $mapCenter,
+					'geojson' => DataMapper::geojson($data['items'] ?? []),
+					'org' => DataMapper::orgDetails($data['items'] ?? []),
+					'tiles' => DataMapper::tilesData($data['items'] ?? []),
 					#'title' => $data['items'][0]['organization']['name'] ?? '',
 					'csvLink' => route('organizationcsv') . '?' . http_build_query($_GET),
 					'pdfLink' => route('organizationpdf') . '?' . http_build_query($_GET),

@@ -2,7 +2,7 @@ point	title	description	iconSize	iconOffset	icon
 39.0100512,-77.1131358	<a href="service/1142869830287216">Aquatics</a>	(301) 530-3725<br/>9401 Old Georgetown Road<br/>Bethesda, MD 20814, US	25,25	-12,-25	img/markerR.png
 38.9560115,-77.36817	<a href="service/1142869830287216">Aquatics</a>	(703) 742-8800<br/>12196 Sunset Hills Road<br/>Reston, VA 20190, US	25,25	-12,-25	img/markerR.png
 38.8212482,-77.0542801	<a href="service/1142869830287216">Aquatics</a>	(703) 838-8085<br/>420 East Monroe Avenue<br/>Alexandria, VA 22301, US	25,25	-12,-25	img/markerR.png
-32.7077251,-97.122901	<a href="service/1142869830287216">Aquatics</a>	(703) 525-5420<br/>3400 North 13th Street<br/>Arlington, VA 22201, US	25,25	-12,-25	img/markerR.png
+38.8871947,-77.1013213	<a href="service/1142869830287216">Aquatics</a>	(703) 525-5420<br/>3400 North 13th St<br/>Arlington, VA 22201	25,25	-12,-25	img/markerR.png
 39.0151225,-77.0140424	<a href="service/1142869830287216">Aquatics</a>	(301) 585-2120<br/>9800 Hastings Drive<br/>Silver Spring, MD 20901, US	25,25	-12,-25	img/markerR.png
 38.9194299,-77.0311521	<a href="service/1142869830287216">Aquatics</a>	(202) 232-6936<br/>1325 W Street<br/>NW, Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
 39.0100512,-77.1131358	<a href="service/741287798283565">Arts & Humanities</a>	(301) 530-3725<br/>9401 Old Georgetown Road<br/>Bethesda, MD 20814, US	25,25	-12,-25	img/markerR.png
@@ -13,13 +13,13 @@ point	title	description	iconSize	iconOffset	icon
 39.0100512,-77.1131358	<a href="service/609764906879432">Group Exercise</a>	(301) 530-3725<br/>9401 Old Georgetown Road<br/>Bethesda, MD 20814, US	25,25	-12,-25	img/markerR.png
 38.9560115,-77.36817	<a href="service/609764906879432">Group Exercise</a>	(703) 742-8800<br/>12196 Sunset Hills Road<br/>Reston, VA 20190, US	25,25	-12,-25	img/markerR.png
 38.8212482,-77.0542801	<a href="service/609764906879432">Group Exercise</a>	(703) 838-8085<br/>420 East Monroe Avenue<br/>Alexandria, VA 22301, US	25,25	-12,-25	img/markerR.png
-32.7077251,-97.122901	<a href="service/609764906879432">Group Exercise</a>	(703) 525-5420<br/>3400 North 13th Street<br/>Arlington, VA 22201, US	25,25	-12,-25	img/markerR.png
+38.8871947,-77.1013213	<a href="service/609764906879432">Group Exercise</a>	(703) 525-5420<br/>3400 North 13th St<br/>Arlington, VA 22201	25,25	-12,-25	img/markerR.png
 39.0151225,-77.0140424	<a href="service/609764906879432">Group Exercise</a>	(301) 585-2120<br/>9800 Hastings Drive<br/>Silver Spring, MD 20901, US	25,25	-12,-25	img/markerR.png
 38.9194299,-77.0311521	<a href="service/609764906879432">Group Exercise</a>	(202) 232-6936<br/>1325 W Street<br/>NW, Washington, DC 20009, US	25,25	-12,-25	img/markerR.png
 39.0100512,-77.1131358	<a href="service/793641507311678">Self Defense</a>	(301) 530-3725<br/>9401 Old Georgetown Road<br/>Bethesda, MD 20814, US	25,25	-12,-25	img/markerR.png
 38.9560115,-77.36817	<a href="service/793641507311678">Self Defense</a>	(703) 742-8800<br/>12196 Sunset Hills Road<br/>Reston, VA 20190, US	25,25	-12,-25	img/markerR.png
 38.8212482,-77.0542801	<a href="service/793641507311678">Self Defense</a>	(703) 838-8085<br/>420 East Monroe Avenue<br/>Alexandria, VA 22301, US	25,25	-12,-25	img/markerR.png
-32.7077251,-97.122901	<a href="service/793641507311678">Self Defense</a>	(703) 525-5420<br/>3400 North 13th Street<br/>Arlington, VA 22201, US	25,25	-12,-25	img/markerR.png
+38.8871947,-77.1013213	<a href="service/793641507311678">Self Defense</a>	(703) 525-5420<br/>3400 North 13th St<br/>Arlington, VA 22201	25,25	-12,-25	img/markerR.png
 39.004646,-77.1172205	<a href="service/793641507311678">Self Defense</a>	(301) 530-8500<br/>5650 Oakmont Avenue<br/>Bethesda, MD 20817, US	25,25	-12,-25	img/markerR.png
 38.8893928,-76.5293426	<a href="service/1261952699824933">Summer Day Camp</a>	(410) 919-1410<br/>4003 Camp Letts Road<br/>Edgewater, MD 21037, US	25,25	-12,-25	img/markerR.png
 38.8488819,-76.9725655	<a href="service/1261952699824933">Summer Day Camp</a>	(202) 889-0643<br/>2118 Ridgecrest Court<br/>SE, Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
@@ -32,7 +32,7 @@ point	title	description	iconSize	iconOffset	icon
 38.8488819,-76.9725655	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(202) 889-0643<br/>2118 Ridgecrest Court<br/>SE, Washington, DC 20020, US	25,25	-12,-25	img/markerR.png
 38.9560115,-77.36817	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(703) 742-8800<br/>12196 Sunset Hills Road<br/>Reston, VA 20190, US	25,25	-12,-25	img/markerR.png
 38.8212482,-77.0542801	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(703) 838-8085<br/>420 East Monroe Avenue<br/>Alexandria, VA 22301, US	25,25	-12,-25	img/markerR.png
-32.7077251,-97.122901	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(703) 525-5420<br/>3400 North 13th Street<br/>Arlington, VA 22201, US	25,25	-12,-25	img/markerR.png
+38.8871947,-77.1013213	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(703) 525-5420<br/>3400 North 13th St<br/>Arlington, VA 22201	25,25	-12,-25	img/markerR.png
 39.008539,-77.4102054	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	624 West Church Road<br/>Sterling, VA 20164, US	25,25	-12,-25	img/markerR.png
 39.004646,-77.1172205	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(301) 530-8500<br/>5650 Oakmont Avenue<br/>Bethesda, MD 20817, US	25,25	-12,-25	img/markerR.png
 38.9453828,-76.977759	<a href="service/1232646715498091">YMCA Virtual & Interactive Labs</a>	(202) 526-4233<br/>1906 Allison Street<br/>NE, Washington, DC 20018, US	25,25	-12,-25	img/markerR.png
