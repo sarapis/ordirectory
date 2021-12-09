@@ -13,14 +13,6 @@
 		<h1>{{ $design['actionbar']['main_text'] }}</h1>
 		  <form action="{{ route('services') }}" method="GET">
 			  <div class="row mt-5">
-			  {{--
-				<div class="col-6">
-				    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Service Name" name="ServiceName">
-				</div>
-				<div class="col-6">
-					<input type="text" class="form-control" aria-label="Text input with radio button" placeholder="... or Organization Name" name="OrganizationName">
-				</div>
-			  --}}
 				<div class="col-12 namesearch-outer">
 					<input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Search for resources" name="NameSearch" id="namesearch">
 					<div class="reset-button">
@@ -31,8 +23,7 @@
 				</div>
 				<div class="col-6">
 					<div class="input-group my-4 ">
-						<button style="min-width:8em;" type="submit" class="btn btn-primary customized">{{ $design['actionbar']['submit_button_text'] }}</button>
-							{{--<button style="min-width:8em;"  type="reset" class="btn btn-light ml-2" onclick="document.location.assign('search.php');">Reset</button>--}}
+						<button style="min-width:8em;" type="submit" class="btn btn-primary customized" onClick="return check_empty_input();">{{ $design['actionbar']['submit_button_text'] }}</button>
 					</div>
 				</div>
 			  </div>
@@ -94,8 +85,6 @@
 												@else
 													<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="pl-1">{{$item2['name']}}</a></p>
 												@endif
-
-												{{--<p>—&nbsp;<a href="{{ preg_replace('~.php~', '', $item2['url']) }}" class="pl-1">{{ $item2['name'] }}</a></p>--}}
 											@endforeach
 										  </div>
 										</div>

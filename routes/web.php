@@ -30,6 +30,8 @@ Route::get('/organization', [SearchController::class, 'organization'])->name('or
 Route::get('/organization.csv', [SearchController::class, 'organizationcsv'])->name('organizationcsv');
 Route::get('/organization.pdf', [SearchController::class, 'organizationpdf'])->name('organizationpdf');
 
+Route::get('/bigmap', [SearchController::class, 'bigmap'])->name('bigmap');
+
 
 ###################### cron ################################################################################
 

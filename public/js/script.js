@@ -14,9 +14,9 @@ function newMap() {
 	
 	map = new mapboxgl.Map({
 		container: 'map',
-		style: 'mapbox://styles/mapbox/light-v10',
+		//style: 'mapbox://styles/mapbox/light-v10',
 		//style: 'mapbox://styles/mapbox/navigation-day-v1',
-		//style: 'mapbox://styles/mapbox/streets-v11',
+		style: 'mapbox://styles/mapbox/streets-v11',
 		//style: 'mapbox://styles/mapbox/dark-v10',
 		center: center,
 		zoom: zoom

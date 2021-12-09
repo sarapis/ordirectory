@@ -156,6 +156,38 @@ class SearchController extends Controller
 		$this->exportpdf($title, $hh, [$dd]);
     }
 
+    public function bigmap()
+    {
+		set_time_limit(600);
+		$m = Model::engine();
+		$data = [];
+		$page = 1;
+		$i = 5;
+		do {
+			$pp = ['per_page' => 100, 'page' => $page];
+			$resp = $m->req(config('conf.APIENTRY') . "/services/complete/?per_page=100&page={$page}");
+			if ($resp['items'] ?? null)
+				$data = array_merge($data, $resp['items']);
+			else
+			{	
+				//var_dump($resp);
+				if ($i-- <= 0)
+					return abort(500, 'API error');
+				else
+					continue;
+			}
+		} while (++$page <= $resp['total_pages'] + 1);
+		
+		return view('bigmap', [
+				'data' => $data,
+				'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
+				'req' => [],
+				'geojson' => DataMapper::geojson($data ?? []),
+			]);
+    }
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
