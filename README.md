@@ -39,7 +39,7 @@ Set Apache AllowOverride option for section ``<Directory "/target/folder/public"
 
 ## Demo Installation
 
-Live deployed system can be found in the [https://dcnext.sarapis.org/](https://dcnext.sarapis.org/).
+Live deployed system can be found at [https://dcnext.sarapis.org/](https://dcnext.sarapis.org/).
 
 
 ## Contributing
