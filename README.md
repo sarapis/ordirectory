@@ -1,4 +1,4 @@
-This appp is built in PHP using the Laravel framework.
+This app is built in PHP using the Laravel framework.
 
 ## Environment
 
