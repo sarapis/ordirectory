@@ -44,20 +44,7 @@ Live deployed system can be found in the [https://dcnext.sarapis.org/](https://d
 
 ## Contributing
 
-Thank you for considering contributing to the Databook! 
-
-We'd love to work with you to incorporate your ideas, designs and code into our project.
-
-We're committed to working in the open. Please consider collaborating with us!
-
-Here are a few ways to connect with us:
-
-- [Subscribe to our Newsletter](https://www.notion.so/Newsletter-a05ea3bf416848e381c9fb9df93b2ec5)
-- [Join our Slack](https://join.slack.com/t/wegovnyc/shared_invite/zt-ydyfsw37-FJ44MKk9eHrwhk73XE9r~g)
-- [Send us a Message](https://www.notion.so/Contact-Us-54b075fa86ec47ebae48dae1595afc2c)
-- [Make a Donation](https://opencollective.com/wegovnyc)
-
-We're also actively monitoring the Github Issue queue in this repository so please feel free to post to it and we'll respond forthwith!
+Please use Github's issue tracking system to log bugs, propose features, offer assistance or start a general conversation about the code!
 
 ## License
 
