@@ -59,7 +59,8 @@ class PDF extends Fpdf
 		foreach($this->headers as $k=>$w)
 		{
 			#$w = $this->headers[$k];
-			$v = iconv('UTF-8', 'windows-1252', $data[$k] ?? '');
+			$v = @iconv('UTF-8', 'windows-1252', $data[$k] ?? '');
+			
 			//Save the current position
 			$x = $this->GetX();
 			$y = $this->GetY();
