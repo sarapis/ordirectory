@@ -85,9 +85,9 @@ class Model
 
 	static function getService($id)
 	{
-		$item = self::req(config('conf.APIENTRY') . '/services/complete/' . $id);
-		foreach ($item['location'] ?? [] as $i=>$loc)
-			$item['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
+		$item = self::req(config('conf.APIENTRY') . '/services/completeext/' . $id);
+		#foreach ($item['location'] ?? [] as $i=>$loc)
+		#	$item['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
 		$item['categories'] = $item['eligibility'] = []; 
 		foreach ($item['taxonomy'] ?? [] as $taxonomy)
 		{
