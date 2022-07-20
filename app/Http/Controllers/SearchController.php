@@ -45,6 +45,7 @@ class SearchController extends Controller
 				#'title' => 'DC Social Services Search',
 				'csvLink' => route('servicescsv') . '?' . http_build_query($_GET),
 				'pdfLink' => route('servicespdf') . '?' . http_build_query($_GET),
+				'APIlocUrl' => Model::url('/locations/complete/locID'),
 			]);
     }
 

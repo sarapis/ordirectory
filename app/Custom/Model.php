@@ -62,12 +62,12 @@ class Model
 			'TaxonomyName' => sprintf('/%s?queries=%s|%s&%s', preg_replace('~%2f~si', '/', $value), $strict, $taxonomyFamily, $ppp)
 		];
 		$req = $reqs[$field];
-		#echo config('conf.APIENTRY') . '/services/complete' . $req;
-		$data = self::req($q = config('conf.APIENTRY') . '/services/complete' . $req);
+		#echo config('conf.APIENTRY') . '/services/completeext' . $req;
+		$data = self::req($q = config('conf.APIENTRY') . '/services/completeext' . $req);
 		foreach ($data['items'] ?? [] as $k=>$item)
 		{
-			foreach ($item['location'] ?? [] as $i=>$loc)
-				$data['items'][$k]['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
+			#foreach ($item['location'] ?? [] as $i=>$loc)
+			#	$data['items'][$k]['location'][$i] = array_merge($loc, self::getServiceLocationDetails($loc['id'], $item['id']));
 				
 			$data['items'][$k]['categories'] = $data['items'][$k]['eligibility'] = []; 
 			foreach ($item['taxonomy'] ?? [] as $taxonomy)
@@ -119,11 +119,18 @@ class Model
 	{
 		#print_r($url);
 		$res = Curl::exec($url);
-		//file_put_contents(__DIR__ . '/../dcmodel.req', print_r([$url, $res], 1));
+		#file_put_contents(__DIR__ . '/../dcmodel.req', print_r([$url, $res], 1));
 		#print_r($res);
 		$jj = json_decode($res, true);
 		return $jj;
 	}
+	
+	
+	static function url($uri)
+	{
+		return config('conf.APIENTRY') . $uri;
+	}
+
 
 	static function getTaxonomies()
 	{
