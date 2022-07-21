@@ -2,7 +2,7 @@
 	use App\Custom\RequestMapper;
 @endphp
 	@if ($design['topmenu']['turned_on'])
-	  <div class="container{{ $fullwidth ? '-fluid' : '' }}">
+	  <div class="language_link container{{ $fullwidth ? '-fluid' : '' }}">
 		<div id="topmenu">
 			<div class="flexmenu-group-left">
 				<img src="{{ $design['topmenu']['logo_url'] }}" class="top-logo" />
@@ -17,7 +17,7 @@
 	  </div>
 	@endif
 
-	<div class="container{{ $fullwidth ? '-fluid language_link' : '' }}">
+	<div class="language_link container{{ $fullwidth ? '-fluid ' : '' }}">
 		<nav class="navbar navbar-expand-lg" id="bottommenu">
 			<div class="flexmenu-group-left">
 				@if ($req && $req == 'back')

@@ -4,19 +4,19 @@ namespace App\Custom;
 class View
 {
 	// ===== singleton =============================================
-	
+
 	protected static $instance;
 
 	public static function engine()
 	{
-        if (!isset(self::$instance)) 
+        if (!isset(self::$instance))
 		{
             $c = get_called_class();
             self::$instance = new $c;
         }
         return self::$instance;
 	}
-		
+
     public function __clone()
     {
         trigger_error('Clone is not allowed.', E_USER_ERROR);
@@ -42,7 +42,7 @@ class View
 		$this->drawServicesTiles($data, $req, $mapCenter);
 		$this->drawFooters();
 	}
-	
+
 
 	public function orgPage($req, $data, $mapCenter)
 	{
@@ -51,7 +51,7 @@ class View
 		$this->drawOrgTiles($data, $req, $mapCenter);
 		$this->drawFooters();
 	}
-	
+
 	public function servicePage($id, $data)
 	{
 		$this->drawHeaders();
@@ -69,14 +69,14 @@ class View
 		$this->drawDataActualDateNotification();
 		$this->drawFooters();
 	}
-	
+
 	// ===== srv ================================================
 
 	protected function __construct()
 	{
 	}
-	
-	
+
+
 	protected function log($msg)
 	{
 		if (!$this->verbose)
@@ -84,9 +84,9 @@ class View
 		echo "{$msg}\n";
 		flush();
 	}
-	
 
-	
+
+
 // ===== html ================================================
 
 public function redirect($trg)
@@ -97,7 +97,7 @@ public function redirect($trg)
 
 public function back()
 {
-	
+
 ?>	<script>
 		function goBack() {
 		  window.history.back();
@@ -119,7 +119,7 @@ public function sendCSV($dd, $fn)
 
 public function drawSearchForm()
 {
-?>	<div class="container-fluid">
+?>	<div class="container-fluid ">
 	  <div class="row mt-3 mb-5">
 		<div class="col-8 mx-auto">
 		<h1>Social Service Directory</h1>
@@ -180,7 +180,7 @@ public function drawTaxonomyAcCard($dd, $offs=0)
 {
 	$ll = [];
 	foreach ($dd['items'] as $item)
-		$ll[] = $item['items'] 	
+		$ll[] = $item['items']
 					? $this->drawTaxonomyInnerCard($item)
 					: "<p>—&nbsp;<a href=\"{$item['url']}\" class=\"pl-1\">{$item['name']}</a></p>";
 	$code = self::offs(implode("\r\n", $ll), 12);
@@ -211,7 +211,7 @@ public function drawTaxonomyInnerCard($dd)
 {
 	$ll = [];
 	foreach ($dd['items'] as $item)
-		$ll[] = $item['items'] 	
+		$ll[] = $item['items']
 					? $this->drawTaxonomyInnerCard($item)
 					: "<p>—&nbsp;<a href=\"{$item['url']}\" class=\"pl-1\">{$item['name']}</a></p>";
 	$code = self::offs(implode("\r\n", $ll), 4);
@@ -224,9 +224,9 @@ public function drawTaxonomyInnerCard($dd)
 		</p>
 		<div class="collapse" id="collapse-{$dd['code']}">
 		  <div class="card card-body">
-			
+
 			{$code}
-			
+
 		  </div>
 		</div>
 EOD;
@@ -250,22 +250,22 @@ public function drawServicesTiles(array $data, $req=[], $mapCenter)
 	{
 		$this->drawNothingFound();
 		return;
-	}	
-	
+	}
+
 ?>	<div class="container-fluid mt-3" id="sGrid">
 		<div class="row">
 			<div class="col-7">
 				<?php $this->drawPagination($data['page'], $data['per_page'], $data['total_items'], $req); ?>
-				
+
 				<?php foreach (DataMapper::tilesData((array)$data['items']) as $row) : ?>
 				  <a href="service.php?id=<?php echo $row['id']; ?>" class="cardlink">
 					<div class="card mb-3">
 					  <div class="card-body">
 						<h5 class="title">
-							<?php echo $row['name']; ?> 
+							<?php echo $row['name']; ?>
 							<?php if ($row['organization']) : ?>
 								<small>by <?php echo $row['organization']; ?></small>
-							<?php endif; ?>	
+							<?php endif; ?>
 						</h5>
 						<p class="descr"><?php echo $row['descr']; ?></p>
 						<p class="address">
@@ -285,8 +285,8 @@ public function drawServicesTiles(array $data, $req=[], $mapCenter)
 				<?php $this->drawPagination($data['page'], $data['per_page'], $data['total_items'], $req);
 					  $this->drawDataActualDateNotification(); ?>
 			</div>
-			
-				
+
+
 			<div class="col-5">
 			  <?php if ($mapCenter['scale']) : ?>
 				<div class="sticky-top" style="height:99vh;" id="map">
@@ -298,7 +298,7 @@ public function drawServicesTiles(array $data, $req=[], $mapCenter)
 						.olPopup p {font-size:0.75em;}
 					</style>
 					<script src="./OpenLayers/OpenLayers.min.js"></script>
-					
+
 					<script type="text/javascript">
 						var map, layer;
 
@@ -307,13 +307,13 @@ public function drawServicesTiles(array $data, $req=[], $mapCenter)
 						map.addLayer(mapnik);
 						var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
 						var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-						
+
 						var newl = new OpenLayers.Layer.Text( "text", { location:"./resources/markers.txt"} );
 						map.addLayer(newl);
 
 						map.setCenter(new OpenLayers.LonLat(<?php echo $mapCenter['cLon']; ?>,<?php echo $mapCenter['cLat']; ?>).transform(fromProjection, toProjection), <?php echo $mapCenter['scale']; ?>);
 					</script>
-				</div>				
+				</div>
 			  <?php else : ?>
 				<div class="sticky-top" style="height:99vh;" id="basicMapPlaceholder">
 					<p>Geocoordinates not available</p>
@@ -322,7 +322,7 @@ public function drawServicesTiles(array $data, $req=[], $mapCenter)
 			</div>
 		</div>
 	</div>
-<?php	
+<?php
 }
 
 
@@ -332,24 +332,24 @@ public function drawOrgTiles(array $data, $req=[], $mapCenter)
 	{
 		$this->drawNothingFound();
 		return;
-	}	
-	
+	}
+
 ?>	<div class="container-fluid mt-3" id="sGrid">
 		<div class="row">
 			<div class="col-7">
 				<?php $this->drawOrgDetails($data); ?>
-				
+
 				<?php $this->drawPagination($data['page'], $data['per_page'], $data['total_items'], $req); ?>
-				
+
 				<?php foreach (DataMapper::tilesData((array)$data['items']) as $row) : ?>
 				  <a href="service.php?id=<?php echo $row['id']; ?>" class="cardlink">
 					<div class="card mb-3">
 					  <div class="card-body">
 						<h5 class="title">
-							<?php echo $row['name']; ?> 
+							<?php echo $row['name']; ?>
 							<?php if ($row['organization']) : ?>
 								<small>by <?php echo $row['organization']; ?></small>
-							<?php endif; ?>	
+							<?php endif; ?>
 						</h5>
 						<p class="descr"><?php echo $row['descr']; ?></p>
 						<p class="address">
@@ -369,12 +369,12 @@ public function drawOrgTiles(array $data, $req=[], $mapCenter)
 				<?php $this->drawPagination($data['page'], $data['per_page'], $data['total_items'], $req);
 					  $this->drawDataActualDateNotification(); ?>
 			</div>
-			
-				
+
+
 			<div class="col-5">
 			  <?php if ($mapCenter['scale']) : ?>
 				<div class="sticky-top" style="height:99vh;" id="map">
-					
+
 					<style>
 						.olPopup {border-radius:15px;}
 						.olPopupContent {padding:15px; overflow: hidden !important;}
@@ -383,7 +383,7 @@ public function drawOrgTiles(array $data, $req=[], $mapCenter)
 						.olPopup p {font-size:0.75em;}
 					</style>
 					<script src="./OpenLayers/OpenLayers.min.js"></script>
-					
+
 					<script type="text/javascript">
 						var map, layer;
 
@@ -392,7 +392,7 @@ public function drawOrgTiles(array $data, $req=[], $mapCenter)
 						map.addLayer(mapnik);
 						var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
 						var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-						
+
 						var newl = new OpenLayers.Layer.Text( "text", { location:"./resources/markers_org.txt"} );
 						map.addLayer(newl);
 
@@ -407,7 +407,7 @@ public function drawOrgTiles(array $data, $req=[], $mapCenter)
 			</div>
 		</div>
 	</div>
-<?php	
+<?php
 }
 
 
@@ -421,12 +421,12 @@ public function drawOrgDetails(array $data)
 				<?php if ($org['url']) : ?>
 					<p class="mb-0">url:&nbsp;&nbsp;<a href="<?php echo $org['url']; ?>"><?php echo $org['url']; ?></a></p>
 				<?php endif; ?>
-					
+
 				<?php if ($org['email']) : ?>
 					<p class="mb-0">email:&nbsp;&nbsp;<a href="mailto:<?php echo $org['email']; ?>"><?php echo $org['email']; ?></a></p>
 				<?php endif; ?>
 			</div>
-<?php			
+<?php
 }
 
 
@@ -436,8 +436,8 @@ public function drawDataGrid(array $data, $req=[])
 	{
 		$this->drawNothingFound();
 		return;
-	}	
-	
+	}
+
 	$hh = DataMapper::gridHeaders($data);
 ?>	<div class="container">
 	  <table class="table">
@@ -445,13 +445,13 @@ public function drawDataGrid(array $data, $req=[])
 		  <tr>
 			<?php foreach ($hh as $h) : ?>
 			  <th scope="col"><?php echo $h; ?></th>
-			<?php endforeach; ?>  
+			<?php endforeach; ?>
 		  </tr>
 		</thead>
 		<tbody>
 		  <?php foreach (DataMapper::gridData($data) as $row) : ?>
 		    <tr>
-			  <?php foreach ($hh as $h) 
+			  <?php foreach ($hh as $h)
 				{
 					$cell = $row[$h] ?? '';
 					switch ($h)
@@ -459,7 +459,7 @@ public function drawDataGrid(array $data, $req=[])
 						case '#':
 							echo "<th>{$cell}</th>";
 							break;
-							
+
 						case 'Taxonomy Terms':
 							echo '<td>';
 							foreach ((array)$cell as $taxonomyItem)
@@ -467,7 +467,7 @@ public function drawDataGrid(array $data, $req=[])
 								$txt = strlen($taxonomyItem) > 25 ? substr($taxonomyItem, 0, 22) . '...' : $taxonomyItem;
 								$href = 'services.php?searchBy=TaxonomyName&strict=true&family=true&TaxonomyName=' . urlencode($taxonomyItem);
 								echo "<a href=\"{$href}\" class=\"badge badge-info mr-1\" title=\"{$taxonomyItem}\">{$txt}</a>";
-							}	
+							}
 							echo '</td>';
 							break;
 						case 'Service Name':
@@ -488,7 +488,7 @@ public function drawDataGrid(array $data, $req=[])
 		</tbody>
 	  </table>
 	</div>
-<?php	
+<?php
 }
 
 
@@ -525,15 +525,15 @@ public function drawPagination($num, $size, $totalItems, $req)
 		return;
 	$isLast = $num == $total;
 	$shorten = $total >= 10;
-	
+
 	$min = 1 + $size * ($num - 1);
 	$max = $size * $num;
-	
+
 ?>
 	  <div class="row">
 		<div class="col-3">
 			Results <?php echo $min; ?> - <?php echo $max; ?> of <?php echo $totalItems; ?>
-		</div> 
+		</div>
 		<div class="col-9">
 			<nav aria-label="Page navigation">
 			  <ul class="pagination justify-content-end">
@@ -549,14 +549,14 @@ public function drawPagination($num, $size, $totalItems, $req)
 					<li class="page-item active"><a class="page-link" href="#"><?php echo $i; ?></a></li>
 				  <?php else : ?>
 					<?php $this->drawPaginationLink($i, false, $req, $i) ?>
-				  <?php endif; ?>	
-				<?php endfor; ?>  
+				  <?php endif; ?>
+				<?php endfor; ?>
 				<?php $this->drawPaginationLink('Next', $isLast, $req, $num + 1) ?>
 			  </ul>
 			</nav>
-	    </div>	
-	  </div>	
-<?php	
+	    </div>
+	  </div>
+<?php
 }
 
 public function drawPaginationLink($label, $disabled, $req, $n)
@@ -568,7 +568,7 @@ public function drawPaginationLink($label, $disabled, $req, $n)
 	    <?php echo $label; ?>
       </a>
 	</li>
-<?php	
+<?php
 }
 
 
@@ -596,19 +596,19 @@ public function drawServiceCard($dd)
 				<?php if ($dd['Phones']) : ?>
 					<p class="mb-0">tel:&nbsp;&nbsp;<?php echo implode(', ', (array)$dd['Phones']); ?></p>
 				<?php endif; ?>
-					
+
 				<?php if ($dd['Website']) : ?>
 					<p class="mb-0">url:&nbsp;&nbsp;<a href="<?php echo $dd['Website']; ?>"><?php echo $dd['Website']; ?></a></p>
 				<?php endif; ?>
-				
+
 				<?php if ($dd['Languages']) : ?>
 					<p class="mb-3">languages:&nbsp;&nbsp;<?php echo implode(', ', (array)$dd['Languages']); ?></p>
 				<?php endif; ?>
-				
+
 				<?php if ($dd['Taxonomy']) : ?>
 					<h5 class="mt-3 mb-3">Taxonomy</h5>
 					<p>
-					<?php foreach ((array)$dd['Taxonomy'] as $taxonomyItem) 
+					<?php foreach ((array)$dd['Taxonomy'] as $taxonomyItem)
 						{
 							$txt = strlen($taxonomyItem) > 25 ? substr($taxonomyItem, 0, 22) . '...' : $taxonomyItem;
 							$href = 'services.php?searchBy=TaxonomyName&strict=true&family=true&TaxonomyName=' . urlencode($taxonomyItem);
@@ -628,7 +628,7 @@ public function drawServiceCard($dd)
 				</div>
 			<?php endif; ?>
 		  </div>
-		  
+
 		  <?php if ($dd['Details']) : ?>
 			<div class="row">
 			<div class="col-12">
@@ -638,11 +638,11 @@ public function drawServiceCard($dd)
 					<h6 style="display: inline-block;"><?php echo $detType; ?>:</h6>&nbsp;&nbsp;<?php echo $detText; ?>
 				  </p>
 				<?php endforeach; ?>
-				
+
 			</div>
 			</div>
 		  <?php endif; ?>
-			
+
 		</div>
 
 		<div class="col-5">
@@ -657,7 +657,7 @@ public function drawServiceCard($dd)
 						var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
 						var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 						var position       = new OpenLayers.LonLat(<?php echo $dd['Lng']; ?>,<?php echo $dd['Lat']; ?>).transform( fromProjection, toProjection);
-						var zoom           = 15; 
+						var zoom           = 15;
 
 						map.addLayer(mapnik);
 
@@ -670,17 +670,17 @@ public function drawServiceCard($dd)
 
 						map.setCenter(position, zoom);
 					</script>
-				<?php else : ?>	
+				<?php else : ?>
 					<div id="basicMapPlaceholder">
 						<p class="mb-0">Geocoordinates not available<br/>
 							<small><a href="https://www.google.com.ua/maps/place/<?php echo urlencode(implode(', ', [$dd['Address'],$dd['City'],$dd['State'],$dd['Zip']])); ?>">See on Google Maps</a></small>
 						</p>
 					</div>
-				<?php endif; ?>	
+				<?php endif; ?>
 			</div>
 		  </div>
-		  
-		  
+
+
 		  <div class="row mt-3">
 			<div class="col">
 				<h6>Location</h6>
@@ -688,17 +688,17 @@ public function drawServiceCard($dd)
 				<p><?php echo implode(', ', [$dd['Address'], $dd['City'], $dd['State'], $dd['Zip']]); ?></p>
 			</div>
 		  </div>
-			
-		
+
+
 		</div>
 
 
 	  </div>
-	  
-	  
-	  
+
+
+
 	</div>
-<?php			
+<?php
 }
 
 public function drawCardGroupOpen($header, $width)
@@ -724,7 +724,7 @@ public function drawCardField($dd, $f, $width=null)
 {
 	$label = $dd[$f];
 	$label = $label == '' || $label == '0000-00-00' ? '-' : $label;
-	echo $width 
+	echo $width
 		? "<div class=\"col-{$width}\">"
 		: "<div class=\"col\">"
 	?><small class="text-muted"><?php echo RequestMapper::getLabel($f); ?></small><br /><h6><?php echo $label; ?></h6></div><?php
@@ -745,7 +745,7 @@ public function drawNavbar($req=[], $fullwidth=false)
 			<?php endif; ?>
 			<?php if ($req) : ?>
 				<a class="nav-link"><?php echo RequestMapper::titleEnc($req, true); ?></a>
-			<?php endif; ?>	
+			<?php endif; ?>
 			<a class="nav-link white_space">&nbsp;</a>
 		    <a class="nav-link " id="google_translate_element"></a>
 		</nav>
@@ -755,7 +755,7 @@ public function drawNavbar($req=[], $fullwidth=false)
 
 public function drawNavbarBack()
 {
-?>	<div class="container">
+?>	<div class="container language_link">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="nav-link" onclick="window.history.back();" href="#">&laquo; Back to search results</a>
 		  <a class="nav-link" id="google_translate_element"></a>
@@ -783,7 +783,7 @@ public function drawHeaders()
 	  #st-1 .st-btn[data-network='sharethis'] {
 		background: transparent !important;
 		padding-left: 0;
-	  }  
+	  }
 	  #google_translate_element{
 		width: 140px;
 		position: absolute;
@@ -807,7 +807,7 @@ public function drawHeaders()
 	  .goog-te-menu-value span{
 		font-family: 'Poppins', sans-serif !important;
 	  }
-	  
+
 	  .goog-te-menu-value span:nth-child(3){
 		display: none;
 	  }
@@ -815,7 +815,7 @@ public function drawHeaders()
 		display: none;
 	  }
 	  .goog-te-menu-value span:nth-child(1){
-		
+
 	  }
 	  .goog-te-gadget-simple .goog-te-menu-value span:nth-of-type(1) {
 		font-family: 'Font Awesome' !important;
@@ -860,10 +860,10 @@ public function drawDataActualDateNotification()
 		  <div class="row mt-4 mb-5 justify-content-center">
 			<div class="col-11 py-4 text-muted" style="border-top: 1px solid #ccc; text-align:center;">
 				<?php echo 'Data last updated <i>' . DATA_ACTUAL_DATE . '</i>'; ?>
-			</div>	
-		  </div>	
-		</div>	
-<?php	
+			</div>
+		  </div>
+		</div>
+<?php
 }
 
 public function drawFooters($autocopmlete=null)
@@ -874,24 +874,24 @@ public function drawFooters($autocopmlete=null)
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity=
 		"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<!-- Google translate -->
-	<script type="text/javascript">  
-		function googleTranslateElementInit() {  
-			new google.translate.TranslateElement( 
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
 				{
-					pageLanguage: 'en', 
-					includedLanguages: 'en,es,ht', 
-					layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+					pageLanguage: 'en',
+					includedLanguages: 'en,es,ht',
+					layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
 					multilanguagePage: true
-				}, 
+				},
 				'google_translate_element'
-			);  
-		}  
+			);
+		}
 	</script>
-	<script type="text/javascript" src= 
-		"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
-	</script>			
-		
-	<?php if ($autocopmlete) 
+	<script type="text/javascript" src=
+		"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+	</script>
+
+	<?php if ($autocopmlete)
 		$this->autocompleteScripts();
 	?>
   </body>

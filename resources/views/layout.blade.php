@@ -17,7 +17,7 @@
     <!-- Styles -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-	{{--<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">--}}
+	<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 	@foreach ($design['fonts'] as $font)
@@ -32,7 +32,7 @@
 		@foreach ($design['styles'] as $style)
 			{{ $style['selector'] }} {{!! $style['style'] !!}}
 		@endforeach
-		
+
 		@php
 			$cols = [
 				'link' => ['a.customized', '#bottommenu a', '.goog-te-gadget-simple .goog-te-menu-value span:before'],
@@ -47,7 +47,7 @@
 				'service-card' => ['#sGrid .card'],
 			];
 		@endphp
-		
+
 		@foreach ($design['style-colors'] as $element=>$cc)
 		  @foreach (explode(', ', $cc) as $i=>$c)
 			@foreach ($cols[$element] ?? [] as $sel)
@@ -59,7 +59,7 @@
 			@endforeach
 		  @endforeach
 		@endforeach
-		
+
 	</style>
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <!--
@@ -81,10 +81,10 @@
 	  <div class="row mt-4 mb-5 justify-content-center">
 		<div class="col-11 py-4 text-muted" style="border-top: 1px solid #ccc; text-align:center;">
 			{!! $design['footer']['text'] !!}
-		</div>	
-	  </div>	
-	</div>	
-	
+		</div>
+	  </div>
+	</div>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -92,23 +92,23 @@
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
 	<!-- Google translate -->
-	<script type="text/javascript">  
-		function googleTranslateElementInit() {  
-			new google.translate.TranslateElement( 
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
 				{
-					pageLanguage: 'en', 
+					pageLanguage: 'en',
 					includedLanguages: '{{ $design['navbar']['translation_languages'] }}',
-					layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+					layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
 					multilanguagePage: true
-				}, 
+				},
 				'google_translate_element'
-			);  
-		}  
+			);
+		}
 	</script>
     <script src="{{ asset('js/script.js') }}" defer></script>
-	<script type="text/javascript" src= 
-		"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
-	</script>			
+	<script type="text/javascript" src=
+		"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+	</script>
 	@yield('scripts')
 </body>
 </html>
