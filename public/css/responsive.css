@@ -82,7 +82,7 @@
   .col-3 { -webkit-box-flex: 0;  -ms-flex: 0 0 40%; flex: 0 0 40%; max-width: 40%;}
   .col-9{ -webkit-box-flex: 0;  -ms-flex: 0 0 60%; flex: 0 0 60%; max-width: 60%;}
   #google_translate_element { position: relative; right: 0px;}
-  .language_link #google_translate_element {right: 25px;position: relative;}
+  .language_link #google_translate_element {position: relative;}
 }
 @media (max-width: 767px)
 {
