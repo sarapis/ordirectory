@@ -10,7 +10,7 @@ class DataMapper
 	{
 		return ['Service',/* 'Organization Name', */'Taxonomy Terms', 'Location Name', 'Phone', 'Address'];
 	}
-	
+
 	static function orgDetails($data)
 	{
 		$rr = [];
@@ -31,7 +31,7 @@ class DataMapper
 				elseif (is_array($rec[$keys['key']]))
 					foreach ($rec[$keys['key']] as $val)
 						$r[$f][] = $val[$keys['subkey']];
-				else 
+				else
 					$r[$f] = '';
 				if (is_array($r[$f]) && count($r[$f]) == 1)
 					$r[$f] = $r[$f][0];
@@ -41,7 +41,7 @@ class DataMapper
 				return $r;
 		}
 		return [];
-	}	
+	}
 
 	static function orgGridData($data)
 	{
@@ -70,7 +70,7 @@ class DataMapper
 				elseif (is_array($rec[$keys['key']]))
 					foreach ($rec[$keys['key']] as $val)
 						$r[$f][] = $val[$keys['subkey']];
-				else 
+				else
 					$r[$f] = '';
 				if ($f <> 'Taxonomy Terms' && is_array($r[$f]) && count($r[$f]) == 1)
 					$r[$f] = $r[$f][0];
@@ -78,7 +78,7 @@ class DataMapper
 			$rr[] = $r;
 		}
 		return $rr;
-	}	
+	}
 
 	static function orgExpDetails($data)
 	{
@@ -89,8 +89,8 @@ class DataMapper
 			$mm[$K] = $dd[$k] ?? '';
 		return $mm;
 	}
-	
-	
+
+
 // ---- tiles ------------------------
 
 	static function tilesData($data, $raw=false)
@@ -119,7 +119,7 @@ class DataMapper
 				elseif (is_array($rec[$keys['key']]))
 					foreach ($rec[$keys['key']] as $val)
 						$r[$f][] = $val[$keys['subkey']];
-				else 
+				else
 					$r[$f] = '';
 				if ($f <> 'Taxonomy Terms' && is_array($r[$f] ?? null) && count($r[$f]) == 1)
 					$r[$f] = $r[$f][0];
@@ -143,7 +143,7 @@ class DataMapper
 		echo '</pre>';
 		*/
 		return $rr;
-	}	
+	}
 
 
 	static function tilesExportData($data, $csv=true)
@@ -171,8 +171,8 @@ class DataMapper
 					foreach ($rec[$keys['key']] as $val)
 						if ($val[$keys['subkey']] ?? null)
 							$r[$f][] = $val[$keys['subkey']];
-				}	
-				else 
+				}
+				else
 					$r[$f] = $rec[$keys['key']];
 			}
 			if ($csv)
@@ -190,7 +190,7 @@ class DataMapper
 		echo '</pre>';
 		*/
 		return $rr;
-	}	
+	}
 
 
 	static function addr($physical_address)
@@ -227,9 +227,9 @@ class DataMapper
 			'Eligibility' => ['key' => 'eligibility', 'subkey' => 'name'],
 			'DetailsType' => ['key' => 'details', 'subkey' => 'type'],
 			'DetailsValue' => ['key' => 'details', 'subkey' => 'value'],
-			
+
 		];
-		
+
 		$r = ['locations' => []];
 		foreach ($idx as $f=>$keys)
 		{
@@ -239,19 +239,19 @@ class DataMapper
 			elseif (is_array($rec[$keys['key']]))
 				foreach ($rec[$keys['key']] as $val)
 					$r[$f][] = $val[$keys['subkey']];
-			else 
+			else
 				$r[$f] = '';
-			
+
 			if (is_array($r[$f] ?? null) && count($r[$f]) == 1)
 				$r[$f] = $r[$f][0];
 		}
 		$r['Website'] = preg_match('~^https?://~si', $r['Website']) ? $r['Website'] : 'http://' . $r['Website'];
-		
+
 		$r['Description'] = preg_replace('~\\\n|\n~si', "<br/>", $r['Description']);
-		
+
 		$details = [];
 		if ($r['DetailsType'])
-		{	
+		{
 			foreach (['Program', 'Required Document', 'Eligibility', 'Insurance', 'Cultural Competencies', 'Ages Served', 'Transportation'] as $trgType)
 				foreach ((array)$r['DetailsType'] as $i=>$type)
 					if ($type == $trgType)
@@ -260,7 +260,7 @@ class DataMapper
 				$details[$type] = implode(', ', $detArr);
 		}
 		$r['Details'] = $details;
-		
+
 		/* locations */
 		$r['display_map'] = false;
 		foreach ($rec['location'] ?? [] as $loc)
@@ -284,7 +284,7 @@ class DataMapper
 		#print_r($rec['regular_schedule']);
 		#print_r($ss);
 		#echo '</pre>';
-		
+
 		$r['regular_schedule'] = null;
 		foreach ($ss as $locid=>$s)
 		{
@@ -298,9 +298,9 @@ class DataMapper
 				$r['regular_schedule'] = implode('<br/>', $srecs);
 		}
 		/* /schedules */
-		
+
 		$r = array_diff_key($r, array_fill_keys(['Address2', 'Address3', 'Address4', 'SchedulesDays', 'SchedulesOpen', 'SchedulesClose', 'DetailsType', 'DetailsValue'], 1));
-		
+
 		#echo '<pre>';
 		#print_r($r);
 		#echo '</pre>';
@@ -313,7 +313,7 @@ class DataMapper
 		foreach ((array)$data as $rec)
 		{
 			foreach ($rec['location'] ?? [] as $i=>$loc)
-				if ((real)trim($loc['latitude'] ?? null) && (real)trim($loc['longitude'] ?? null))
+				if ((float)trim($loc['latitude'] ?? null) && (float)trim($loc['longitude'] ?? null))
 				{
 					$byOrg = ($rec['organization']['name'] ?? null) ? "<br/><small><i>by {$rec['organization']['name']}</i></small>" : '';
 					$srv = $rec['name'] ?? '';
@@ -323,7 +323,7 @@ class DataMapper
 						'type' => 'Feature',
 						'geometry'=> [
 							'type' => 'Point',
-							'coordinates' => [(real)trim($loc['longitude']), (real)trim($loc['latitude'])]
+							'coordinates' => [(float)trim($loc['longitude']), (float)trim($loc['latitude'])]
 						],
 						'properties' => [
 							'id' => $rec['id'],
@@ -331,8 +331,8 @@ class DataMapper
 							'organization' => $rec['organization']['name'] ?? '',
 							'phone' => $phones,
 							'address' => $addr,
-							'lat' => (real)trim($loc['latitude']),
-							'lon' => (real)trim($loc['longitude']),
+							'lat' => (float)trim($loc['latitude']),
+							'lon' => (float)trim($loc['longitude']),
 							'title' => "<a href=\"/service/{$rec['id']}\">{$rec['name']}{$byOrg}</a>",
 							'description' => ($phones ? "{$phones}<br/>" : '') .
 										//"{$rec['address']}<br/>{$rec['city']}, {$rec['state']}, {$rec['zip']}",
@@ -342,7 +342,7 @@ class DataMapper
 				}
 		}
 		return $mm ? ['type' => 'FeatureCollection', 'features' => $mm] : '';
-	}	
+	}
 
 	static function markers_depr($data)
 	{
@@ -350,7 +350,7 @@ class DataMapper
 		foreach ((array)$data as $rec)
 		{
 			foreach ($rec['location'] ?? [] as $i=>$loc)
-				if ((real)trim($loc['latitude'] ?? null) && (real)trim($loc['longitude'] ?? null))
+				if ((float)trim($loc['latitude'] ?? null) && (float)trim($loc['longitude'] ?? null))
 					$mm[] = [
 						'id' => $rec['id'],
 						'lat' => trim($loc['latitude']),
@@ -376,8 +376,8 @@ class DataMapper
 				'iconOffset' => '-12,-25',
 				'icon' => 'img/markerR.png',
 			]);
-			$lats[] = (real)trim($rec['lat']);
-			$lons[] = (real)trim($rec['lon']);
+			$lats[] = (float)trim($rec['lat']);
+			$lons[] = (float)trim($rec['lon']);
 		}
 		if ($lats)
 		{
@@ -393,7 +393,7 @@ class DataMapper
 			return [implode("\n", $rr) . "\n", compact(['cLat', 'cLon', 'scale'])];
 		}
 		return '';
-	}	
+	}
 
 	static function mapScale($dLat, $dLon)
 	{
@@ -415,7 +415,7 @@ class DataMapper
 			{
 				$sLat = $v;
 				break;
-			}	
+			}
 		foreach (
 			[
 				7 => 2.5,
@@ -447,6 +447,6 @@ function schedulesort($a, $b)
 			break;
 	#$a = strtotime(preg_replace('~\W.*~', '', trim($a['day'])) . " {$a['open']}");
 	#$b = strtotime(preg_replace('~\W.*~', '', trim($b['day'])) . " {$b['open']}");
-    #return $a <=> $b;	
+    #return $a <=> $b;
     return $i <=> $k;
 }

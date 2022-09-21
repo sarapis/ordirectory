@@ -6,9 +6,9 @@
   color: #007bff;
   position: relative;
   /* right: -21px; */
-  top: 6px;
+  top: 0px;
 }
-.language_link #google_translate_element {width: 140px;position: absolute;right: 64px;}
+.language_link #google_translate_element {width: 140px;/*position: absolute;right: 64px;*/}
 /*.language_link .goog-te-gadget-simple .goog-te-menu-value span:before {right: 0;}*/
 .badge-info {margin-bottom: 5px;white-space: normal;text-align: left;line-height: 1;}
 #sGrid .descr, #sGrid .badges { font-size: 16px;}
@@ -72,6 +72,7 @@
 }
 @media (max-width: 980px)
 {
+    #bottommenu{padding: .5rem 15px;}
 
 }
 @media (max-width: 800px)
@@ -80,12 +81,14 @@
   .col-7 , .col-5{ -webkit-box-flex: 0;  -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%;}
   .col-3 { -webkit-box-flex: 0;  -ms-flex: 0 0 40%; flex: 0 0 40%; max-width: 40%;}
   .col-9{ -webkit-box-flex: 0;  -ms-flex: 0 0 60%; flex: 0 0 60%; max-width: 60%;}
-  #google_translate_element { position: relative; right: 40px;}
-  .language_link #google_translate_element {right: 25px;position: relative;}
+  #google_translate_element { position: relative; right: 0px;}
+  .language_link #google_translate_element {position: relative;}
 }
 @media (max-width: 767px)
 {
-
+    .flexmenu-group-left, .flexmenu-group-right{display: block;width: 100%;}
+    #bottommenu{display: block;}
+    #bottommenu .nav-link{display: inline-block;padding: 0;}
 }
 @media (max-width: 736px)
 {
@@ -93,7 +96,7 @@
   .form-control { margin-bottom: 20px;}
 }
 @media (max-width: 667px)
-{ 
+{
   .container { max-width: 100%;}
   .language_link #google_translate_element {padding-left: 38px;}
 }
@@ -103,12 +106,18 @@
 }
 @media (max-width: 600px)
 {
-
+    h1{font-size: 25px;}
+    .mt-5, .my-5 {
+        margin-top: 2rem!important;
+    }
+    .mb-5, .my-5{
+        margin-bottom: 2rem!important;
+    }
 }
 @media (max-width: 568px)
 {
-  #google_translate_element {position: relative;  left: -48px;}
-  .language_link  #google_translate_element { width: 100%; position: relative;left: 0;    text-align: left;}
+  #google_translate_element {position: relative;}
+  .language_link  #google_translate_element { width: 100%; position: relative;left: 0;text-align: left;}
   /*.language_link .goog-te-gadget-simple .goog-te-menu-value span:before {right: 26px; top: 6px;}*/
   .nav-link.white_space {padding: 0px;  line-height: 0px;}
   .language_link #google_translate_element { padding-left: 15px;}
@@ -130,7 +139,7 @@
   .language_link #google_translate_element {padding-left: 15px;}
   .tt-menu {width:100%;}
   .container.pl-4 {padding: 0 20px !important;}
-  
+
 }
 @media (max-width: 375px)
 {

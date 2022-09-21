@@ -62,9 +62,10 @@ body{
 #st-1 .st-btn[data-network='sharethis'] {
 	background: transparent !important;
 	padding-left: 0;
-}  
+}
 #google_translate_element{
 	width: 160px;
+    margin-right: 0px !important;
 	/*position: absolute;
 	right: 32px;*/
 }
@@ -94,7 +95,7 @@ body{
 	display: none;
 }
 .goog-te-menu-value span:nth-child(1){
-	
+
 }
 .goog-te-gadget-simple .goog-te-menu-value span:nth-of-type(1) {
 	font-family: 'Font Awesome' !important;
@@ -308,12 +309,7 @@ p .btn-link {padding:0; border:0;}
 	#sGrid .descr, #sGrid .badges {font-size:.85rem;}
 	#sGrid .title {margin-bottom:.75rem;}
 	#sGrid .address {font-weight:400;}
-	
+
 /* org tiles */
 .orgDetails {padding: 0.5em 1.75em 2em;}
-
-
-
-
-
-
+.overflow_responsive {overflow-x: hidden ;}
