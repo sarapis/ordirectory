@@ -34,5 +34,7 @@ Route::get('/bigmap', [SearchController::class, 'bigmap'])->name('bigmap');
 
 
 ###################### cron ################################################################################
-
 Route::get('/cron/updateAutocompleteFiles', [SrvController::class, 'autocompleteFiles'])->name('cronAutocomplete');
+
+###################### cron ################################################################################
+Route::get('/stats', [SrvController::class, 'stats'])->name('stats');

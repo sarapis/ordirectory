@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Custom\Model;
+use Yaml;
 
 
 class SrvController extends Controller
@@ -105,4 +106,14 @@ class SrvController extends Controller
 		return $node;
 	}		
 
+    public function stats()
+    {
+		$m = Model::engine();
+		$data = $m->getStats();
+        return view('stats', [
+					'data' => $data,
+					'design' => Yaml::parse(file_get_contents(base_path() . '/design.yml')),
+					'req' => $_GET,
+				]);
+    }
 }

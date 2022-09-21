@@ -143,4 +143,10 @@ class Model
 		return self::req(config('conf.APIENTRY') . "/{$entry}?page={$pn}&per_page=50&sort_by=name&order=asc");
 	}
 
+// ======= stats ===================================================
+	static function getStats()
+	{
+		return self::req(config('conf.APIENTRY') . "/stats");
+	}
+
 }
