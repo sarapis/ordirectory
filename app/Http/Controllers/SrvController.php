@@ -111,8 +111,8 @@ class SrvController extends Controller
 		$m = Model::engine();
 		$design = Yaml::parse(file_get_contents(base_path() . '/design.yml'));
 		$data = $m->getStats();
-		$dt = DateTime::setTimestamp($data('last_updated'));
-		$tz = new DateTimeZone("Etc/{$design['stats']['timezone']}");
+		$dt = \DateTime::setTimestamp($data('last_updated'));
+		$tz = new \DateTimeZone("Etc/{$design['stats']['timezone']}");
 		$dt->setTimezone($tz);
 		$data['last_updated_fmt'] = $dt->format('Y-m-d H:i:s') . " {$design['stats']['timezone']}";
         return view('stats', [
