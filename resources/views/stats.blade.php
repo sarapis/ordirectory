@@ -24,8 +24,8 @@
 			  <td>{{ $data['locs'] }}</td>
 			</tr>
 			<tr>
-			  <td>Update Timestamp (New York time)</td>
-			  <td>{{ $data['update_time'] }}</td>
+			  <td>Last Updated</td>
+			  <td>{{ $data['last_updated_fmt'] }}</td>
 			</tr>
 		  </tbody>
 		</table>

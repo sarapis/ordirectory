@@ -55,3 +55,6 @@ footer:
 
 pdf:
     logo_url: img/we_gov_logo_blue.png
+    
+stats:
+    timezone: GMT-4
