@@ -112,7 +112,8 @@ class SrvController extends Controller
 		$design = Yaml::parse(file_get_contents(base_path() . '/design.yml'));
 		$data = $m->getStats();
 		$tz = new \DateTimeZone("Etc/{$design['stats']['timezone']}");
-		$dt = (new \DateTime())->setTimestamp($data('last_updated'))->setTimezone($tz);
+		$dt = new \DateTime();
+		$dt = $dt->setTimestamp($data('last_updated'))->setTimezone($tz);
 		$data['last_updated_fmt'] = $dt->format('Y-m-d H:i:s') . " {$design['stats']['timezone']}";
         return view('stats', [
 					'data' => $data,
