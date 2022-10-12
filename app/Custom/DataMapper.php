@@ -262,9 +262,12 @@ class DataMapper
 		$r['Details'] = $details;
 
 		/* locations */
+		$ss = [];
 		$r['display_map'] = false;
 		foreach ($rec['location'] ?? [] as $loc)
 		{
+			foreach ($loc['regular_schedule'] ?? [] as $sch)
+				$ss[$sch['location_id'] ?? ''][] = ['day' => trim($sch['weekday']), 'open' => trim($sch['opens_at']), 'close' => trim($sch['closes_at'])];
 			$r['locations'][$loc['id']] = array_merge($loc, [
 				'display_pin' => $loc['latitude'] && $loc['longitude'],
 				'physical_address' => self::addr($loc['physical_address'] ?? []),
@@ -277,11 +280,10 @@ class DataMapper
 		/* /locations */
 
 		/* schedules */
-		$ss = [];
 		foreach ($rec['regular_schedule'] ?? [] as $sch)
 			$ss[$sch['location_id'] ?? ''][] = ['day' => trim($sch['weekday']), 'open' => trim($sch['opens_at']), 'close' => trim($sch['closes_at'])];
 		#echo '<pre>';
-		#print_r($rec['regular_schedule']);
+		#print_r($rec['regular_schedule'] ?? []);
 		#print_r($ss);
 		#echo '</pre>';
 
@@ -293,9 +295,9 @@ class DataMapper
 			foreach ((array)$s as $srec)
 				$srecs[] = ($srec['day'] ? "<span class='weekday'>{$srec['day']}</span> " : '') . implode($srec['open'] && $srec['close'] ? '-' : '', [$srec['open'], $srec['close']]);
 			if ($locid)
-				$r['locations'][$locid]['regular_schedule'] = implode('<br/>', $srecs);
+				$r['locations'][$locid]['regular_schedule'] = implode('<br/>', array_unique($srecs));
 			else
-				$r['regular_schedule'] = implode('<br/>', $srecs);
+				$r['regular_schedule'] = implode('<br/>', array_unique($srecs));
 		}
 		/* /schedules */
 
